@@ -1,5 +1,5 @@
 let options = {
-    filterBadwords: true
+    filterBadwords: true,
 };
 
 module.exports = options;

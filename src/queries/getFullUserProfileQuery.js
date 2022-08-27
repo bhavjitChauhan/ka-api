@@ -1,5 +1,6 @@
-const GET_FULL_USER_PROFILE_QUERY = "" +
-`query getFullUserProfile($kaid: String, $username: String) {
+const GET_FULL_USER_PROFILE_QUERY =
+    "" +
+    `query getFullUserProfile($kaid: String, $username: String) {
   user(kaid: $kaid, username: $username) {
     id
     kaid
@@ -29,50 +30,20 @@ const GET_FULL_USER_PROFILE_QUERY = "" +
     joined
     points
     countVideosCompleted
-    publicBadges {
-      badgeCategory
-      description
-      isOwned
-      isRetired
-      name
-      points
-      absoluteUrl
-      hideContext
-      icons {
-        smallUrl
-        compactUrl
-        emailUrl
-        largeUrl
-        __typename
-      }
-      relativeUrl
-      safeExtendedDescription
-      slug
-      translatedDescription
-      translatedSafeExtendedDescription
-      __typename
-    }
     bio
-    background {
-      name
-      imageSrc
+    profile {
+      accessLevel
       __typename
     }
     soundOn
     muteVideos
+    showCaptions
     prefersReducedMotion
     noColorInVideos
     autocontinueOn
-    avatar {
-      name
-      imageSrc
-      __typename
-    }
-    hasChangedAvatar
     newNotificationCount
     canHellban: hasPermission(name: "can_ban_users", scope: GLOBAL)
     canMessageUsers: hasPermission(name: "can_send_moderator_messages", scope: GLOBAL)
-    discussionBanned
     isSelf: isActor
     hasStudents: hasCoachees
     hasClasses
@@ -82,13 +53,13 @@ const GET_FULL_USER_PROFILE_QUERY = "" +
     homepageUrl
     isMidsignupPhantom
     includesDistrictOwnedData
+    canAccessDistrictsHomepage
     preferredKaLocale {
       id
       kaLocale
       status
       __typename
     }
-    transferAuthUrl(pathname: "")
     underAgeGate {
       parentEmail
       daysUntilCutoff
@@ -103,7 +74,6 @@ const GET_FULL_USER_PROFILE_QUERY = "" +
     }
     pendingEmailVerifications {
       email
-      unverifiedAuthEmailToken
       __typename
     }
     tosAccepted

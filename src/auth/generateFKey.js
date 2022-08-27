@@ -2,13 +2,13 @@ const FKeyChars = "0123456789abcdefghijklmnopqrstuvwxyz";
 
 /**
  * Generates a FKey for a khan session
- * 
+ *
  * @returns {string} FKey
  */
 function generateFKey() {
     var chars = "";
 
-    for(var i = 0; i < 68; i++) {
+    for (var i = 0; i < 68; i++) {
         chars += FKeyChars[Math.floor(Math.random() * FKeyChars.length)];
     }
 

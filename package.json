@@ -4,7 +4,9 @@
   "description": "API for KA's computer science program.",
   "main": "src/ka_api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "format": "prettier --write src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,13 @@
   },
   "homepage": "https://github.com/smj-edison/ka-api#readme",
   "dependencies": {
-    "@2toad/profanity": "^1.3.1",
-    "axios": "^0.21.1",
+    "@2toad/profanity": "^2.1.0",
+    "axios": "^0.27.2",
     "deepmerge": "^4.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }

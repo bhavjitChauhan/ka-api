@@ -1,5 +1,6 @@
-const LOGIN_QUERY = "" +
-`mutation loginWithPasswordMutation($identifier: String!, $password: String!) {
+const LOGIN_QUERY =
+    "" +
+    `mutation loginWithPasswordMutation($identifier: String!, $password: String!) {
   loginWithPassword(identifier: $identifier, password: $password) {
     user {
       id
