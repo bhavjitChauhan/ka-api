@@ -78,7 +78,7 @@ async function newProgram(cookies, code, settings = {}, type = "pjs") {
  * @param {string} originalProgram - The original program's ID
  * @param {string} code - The code in the spinoff
  * @param {object} [settings] Settings to override the JSON request
- * @param {object} [originalProgramJSON] The program json if already retrieved (to reduce unneccessary requests)
+ * @param {object} [originalProgramJSON] The program json if already retrieved (to reduce unnecessary requests)
  */
 async function spinOffProgram(
     cookies,
@@ -131,7 +131,7 @@ async function spinOffProgram(
  * @param {string} programId The program's ID being updated
  * @param {string} code The code
  * @param {object} [settings] Settings to override the JSON request
- * @param {object} [programJson] The program json if already retrieved (to reduce unneccessary requests)
+ * @param {object} [programJson] The program json if already retrieved (to reduce unnecessary requests)
  */
 async function updateProgram(
     cookies,

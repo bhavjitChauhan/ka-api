@@ -50,7 +50,7 @@ function getCookieValue(cookies, cookieName) {
  * Given a list of two cookie arrays, will override any old cookies with the new cookies,
  * and otherwise add them together
  *
- * @param {Array<string>} oldCookies - old cookies (overriden by any new cookies)
+ * @param {Array<string>} oldCookies - old cookies (overridden by any new cookies)
  * @param {Array<string>} newCookies - new cookies (to override old cookies)
  */
 function mergeCookies(oldCookies, newCookies) {
