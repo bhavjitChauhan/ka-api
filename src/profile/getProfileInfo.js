@@ -5,10 +5,10 @@ const {
 const GET_FULL_USER_PROFILE_QUERY = require("../queries/getFullUserProfileQuery.js");
 
 /**
- * Get a user's profile information given their username or kaid
+ * Get a user's profile information given their username or KAID
  *
  * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
- * @param {string} user - The requested user's username or kaid
+ * @param {string} user - The requested user's username or KAID
  *
  * @returns {Promise<GetFullUserProfile>} - The user's profile information
  */

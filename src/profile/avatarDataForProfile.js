@@ -5,10 +5,10 @@ const {
 const AVATAR_DATA_FOR_PROFILE_QUERY = require("../queries/avatarDataForProfile.js");
 
 /**
- * Get a user's avatar information given their kaid
+ * Get a user's avatar information given their KAID
  *
  * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
- * @param {string} kaid - The requested user's kaid
+ * @param {string} kaid - The requested user's KAID
  *
  * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
  */

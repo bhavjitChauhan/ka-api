@@ -5,10 +5,10 @@ const {
 const GET_PROFILE_WIDGETS_QUERY = require("../queries/getProfileWidgets.js");
 
 /**
- * Get a user's profile information given their kaid
+ * Get a user's profile information given their KAID
  *
  * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
- * @param {string} kaid - The requested user's kaid
+ * @param {string} kaid - The requested user's KAID
  *
  * @returns {Promise<GetProfileWidgets>} - The user's profile information
  */

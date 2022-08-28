@@ -241,10 +241,10 @@ declare module "queries/getFullUserProfileQuery" {
 declare module "profile/getProfileInfo" {
     export = getProfileInfo;
     /**
-     * Get a user's profile information given their username or kaid
+     * Get a user's profile information given their username or KAID
      *
      * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} user - The requested user's username or kaid
+     * @param {string} user - The requested user's username or KAID
      *
      * @returns {Promise<GetFullUserProfile>} - The user's profile information
      */
@@ -287,10 +287,10 @@ declare module "queries/getProfileWidgets" {
 declare module "profile/getProfileWidgets" {
     export = getProfileWidgets;
     /**
-     * Get a user's profile information given their kaid
+     * Get a user's profile information given their KAID
      *
      * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} kaid - The requested user's kaid
+     * @param {string} kaid - The requested user's KAID
      *
      * @returns {Promise<GetProfileWidgets>} - The user's profile information
      */
@@ -363,10 +363,10 @@ declare module "queries/avatarDataForProfile" {
 declare module "profile/avatarDataForProfile" {
     export = avatarDataForProfile;
     /**
-     * Get a user's avatar information given their kaid
+     * Get a user's avatar information given their KAID
      *
      * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} kaid - The requested user's kaid
+     * @param {string} kaid - The requested user's KAID
      *
      * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
      */
@@ -401,17 +401,36 @@ declare module "programs/sortingType" {
     }>;
 }
 declare module "profile/getUserPrograms" {
+    export type GetUserPrograms = {
+        cursor: string;
+        scratchpads: Array<GetUserProgramsScratchpad>;
+        complete: boolean;
+    };
+    export type GetUserProgramsScratchpad = {
+        thumb: string;
+        created: string;
+        authorKaid: string;
+        title: string;
+        sumVotesIncremented: number;
+        flaggedByUser: boolean;
+        url: string;
+        key: string;
+        authorNickname: string;
+        spinoffCount: number;
+        translatedTitle: string;
+    };
     /**
      *
-     * @param {string} kaid The user's KAID
-     * @param {SORTING_TYPE} sortingType The sorting type
-     * @param {number} limit The maximum number of programs to retrieve
-     * @returns {Promise<object>} The JSON
+     * @param {string} user The user's KAID or username
+     * @param {SORTING_TYPE} [sortingType=1] The sorting type (default is most votes)
+     * @param {number} [limit=1e4] The maximum number of programs to retrieve
+     *
+     * @returns {Promise<GetUserPrograms>} The JSON
      */
-    export function getUserPrograms(kaid: string, sortingType: Readonly<{
+    export function getUserPrograms(user: string, sortingType?: Readonly<{
         MOST_VOTES: "MOST_VOTES";
         NEWEST: "NEWEST";
-    }>, limit: number): Promise<object>;
+    }>, limit?: number): Promise<GetUserPrograms>;
     /**
      * Get programs as a logged in user (useful for detecting shadowbanning)
      *
