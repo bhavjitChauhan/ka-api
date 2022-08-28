@@ -273,8 +273,39 @@ declare module "profile/getProfileInfo" {
                     accessLevel: string;
                 };
                 profileRoot: string;
-                username: string;
+                username: string | null;
             };
+        };
+    };
+}
+declare module "queries/avatarDataForProfile" {
+    export = AVATAR_DATA_FOR_PROFILE_QUERY;
+    const AVATAR_DATA_FOR_PROFILE_QUERY: "query avatarDataForProfile($kaid: String!) {\n  user(kaid: $kaid) {\n    id\n    avatar {\n      name\n      imageSrc\n      __typename\n    }\n    __typename\n  }\n}\n";
+}
+declare module "profile/avatarDataForProfile" {
+    export = avatarDataForProfile;
+    /**
+     * Get a user's avatar information given their username or kaid
+     *
+     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+     * @param {string} user - The requested user's username or kaid
+     *
+     * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
+     */
+    function avatarDataForProfile(cookies: Array<string>, user: string): Promise<AvatarDataForProfile>;
+    namespace avatarDataForProfile {
+        export { AvatarDataForProfile };
+    }
+    type AvatarDataForProfile = {
+        user: {
+            __typename: "User";
+            avatar: {
+                __typename: "Avatar";
+                imageSrc: string;
+                name: string;
+            };
+            id: string;
+            kaid: string;
         };
     };
 }
@@ -310,37 +341,6 @@ declare module "profile/getUserPrograms" {
         MOST_VOTES: "MOST_VOTES";
         NEWEST: "NEWEST";
     }>, limit: number): Promise<object>;
-}
-declare module "queries/avatarDataForProfile" {
-    export = AVATAR_DATA_FOR_PROFILE_QUERY;
-    const AVATAR_DATA_FOR_PROFILE_QUERY: "query avatarDataForProfile($kaid: String!) {\n  user(kaid: $kaid) {\n    id\n    avatar {\n      name\n      imageSrc\n      __typename\n    }\n    __typename\n  }\n}\n";
-}
-declare module "profile/avatarDataForProfile" {
-    export = avatarDataForProfile;
-    /**
-     * Get a user's avatar information given their username or kaid
-     *
-     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} user - The requested user's username or kaid
-     *
-     * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
-     */
-    function avatarDataForProfile(cookies: Array<string>, user: string): Promise<AvatarDataForProfile>;
-    namespace avatarDataForProfile {
-        export { AvatarDataForProfile };
-    }
-    type AvatarDataForProfile = {
-        user: {
-            __typename: "User";
-            avatar: {
-                __typename: "Avatar";
-                imageSrc: string;
-                name: string;
-            };
-            id: string;
-            kaid: string;
-        };
-    };
 }
 declare module "programs/defaultProgramJson" {
     export const contentKindCode: string;
@@ -516,6 +516,7 @@ declare module "ka-api" {
         getUserPrograms: typeof import("profile/getUserPrograms").getUserPrograms;
         getUserProgramsAuthenticated: typeof import("profile/getUserPrograms").getUserProgramsAuthenticated;
         getProfileInfo: typeof import("profile/getProfileInfo");
+        avatarDataForProfile: typeof import("profile/avatarDataForProfile");
     };
     export const programs: {
         getSpinoffs: typeof import("programs/getSpinoffs").getSpinoffs;

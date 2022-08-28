@@ -53,5 +53,5 @@ module.exports = getProfileInfo;
  * @property {"Profile"} data.user.profile.__typename
  * @property {string} data.user.profile.accessLevel
  * @property {string} data.user.profileRoot
- * @property {string} data.user.username
+ * @property {string|null} data.user.username
  */

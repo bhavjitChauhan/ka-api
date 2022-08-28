@@ -22,8 +22,8 @@ module.exports.notifications = {
 
 module.exports.profile = {
     getProfileInfo: require("./profile/getProfileInfo.js"),
+    avatarDataForProfile: require("./profile/avatarDataForProfile.js"),
     ...require("./profile/getUserPrograms.js"),
-    ...require("./profile/avatarDataForProfile.js"),
 };
 
 module.exports.programs = {
