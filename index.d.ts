@@ -280,6 +280,82 @@ declare module "profile/getProfileInfo" {
         username: string | null;
     };
 }
+declare module "queries/getProfileWidgets" {
+    export = GET_PROFILE_WIDGETS_QUERY;
+    const GET_PROFILE_WIDGETS_QUERY: "query getProfileWidgets($kaid: String!) {\n  user(kaid: $kaid) {\n    id\n    kaid\n    badgeCounts\n    isChild\n    profile {\n      programs {\n        authorKaid\n        authorNickname\n        deleted\n        displayableSpinoffCount\n        imagePath\n        key\n        sumVotesIncremented\n        translatedTitle\n        url\n        __typename\n      }\n      __typename\n    }\n    programsDeprecated(limit: 2) {\n      authorKaid\n      authorNickname\n      displayableSpinoffCount\n      imagePath\n      key\n      sumVotesIncremented\n      translatedTitle\n      url\n      __typename\n    }\n    __typename\n  }\n  userSummary(kaid: $kaid) {\n    statistics {\n      answers\n      comments\n      flags\n      projectanswers\n      projectquestions\n      questions\n      replies\n      votes\n      __typename\n    }\n    __typename\n  }\n}\n";
+}
+declare module "profile/getProfileWidgets" {
+    export = getProfileWidgets;
+    /**
+     * Get a user's profile information given their kaid
+     *
+     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+     * @param {string} kaid - The requested user's kaid
+     *
+     * @returns {Promise<GetProfileWidgets>} - The user's profile information
+     */
+    function getProfileWidgets(cookies: Array<string>, kaid: string): Promise<GetProfileWidgets>;
+    namespace getProfileWidgets {
+        export { GetProfileWidgets, GetProfileWidgetsData, GetProfileWidgetsUser, GetProfileWidgetsUserSummary, GetFullUserProfileProgram, getProfileWidgetsErrors, getProfileWidgetsErrorsMessage, getProfileWidgetsErrorsMessageExtensions };
+    }
+    type GetProfileWidgets = {
+        data: GetProfileWidgetsData | undefined;
+        errors: getProfileWidgetsErrors | undefined;
+    };
+    type GetProfileWidgetsData = {
+        user: GetProfileWidgetsUser | null;
+        userSummary: GetProfileWidgetsUserSummary | null;
+    };
+    type GetProfileWidgetsUser = {
+        __typename: "User";
+        badgeCounts: null;
+        id: string;
+        isChild: null;
+        kaid: string;
+        profile: {
+            __typename: "Profile";
+            programs: [];
+        };
+        /**
+         * *
+         */
+        programsDeprecated: Array<GetFullUserProfileProgram>;
+    };
+    type GetProfileWidgetsUserSummary = {
+        __typename: "UserSummary";
+        statistics: {
+            __typename: "UserStatistics";
+            answers: number;
+            comments: number;
+            flags: number;
+            projectanswers: number;
+            projectquestions: number;
+            questions: number;
+            replies: number;
+            votes: number;
+        };
+    };
+    type GetFullUserProfileProgram = {
+        __typename: "Program";
+        authorKaid: null;
+        authorNickname: null;
+        displayableSpinoffCount: number;
+        imagePath: string;
+        key: string;
+        sumVotesIncremented: number;
+        translatedTitle: string;
+        url: string;
+    };
+    type getProfileWidgetsErrors = Array<getProfileWidgetsErrorsMessage>;
+    type getProfileWidgetsErrorsMessage = {
+        message: string;
+        extensions: string | undefined;
+    };
+    type getProfileWidgetsErrorsMessageExtensions = {
+        code: string;
+        serviceName: string;
+    };
+}
 declare module "queries/avatarDataForProfile" {
     export = AVATAR_DATA_FOR_PROFILE_QUERY;
     const AVATAR_DATA_FOR_PROFILE_QUERY: "query avatarDataForProfile($kaid: String!) {\n  user(kaid: $kaid) {\n    id\n    avatar {\n      name\n      imageSrc\n      __typename\n    }\n    __typename\n  }\n}\n";
@@ -524,6 +600,7 @@ declare module "ka-api" {
         getUserPrograms: typeof import("profile/getUserPrograms").getUserPrograms;
         getUserProgramsAuthenticated: typeof import("profile/getUserPrograms").getUserProgramsAuthenticated;
         getProfileInfo: typeof import("profile/getProfileInfo");
+        getProfileWidgets: typeof import("profile/getProfileWidgets");
         avatarDataForProfile: typeof import("profile/avatarDataForProfile");
     };
     export const programs: {

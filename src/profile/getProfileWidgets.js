@@ -29,9 +29,7 @@ async function getProfileWidgets(cookies, kaid) {
 
 module.exports = getProfileWidgets;
 
-
-
-/** 
+/**
  * @typedef {Object} GetProfileWidgets
  * @property {GetProfileWidgetsData|undefined} data
  * @property {getProfileWidgetsErrors|undefined} errors
@@ -53,7 +51,7 @@ module.exports = getProfileWidgets;
  * @property {object} profile
  * @property {"Profile"} profile.__typename
  * @property {[]} profile.programs
- * @property {Array<GetFullUserProfileProgram>} programsDeprecated * 
+ * @property {Array<GetFullUserProfileProgram>} programsDeprecated *
  */
 
 /**
