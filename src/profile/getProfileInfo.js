@@ -35,23 +35,28 @@ module.exports = getProfileInfo;
 /**
  * @typedef {Object} GetFullUserProfile
  * @property {Object} data
- * @property {Object} data.user
- * @property {string} data.user.__typename
- * @property {string} data.user.bio
- * @property {boolean} data.user.canAccessDistrictsHomepage
- * @property {number} data.user.countVideosCompleted
- * @property {string} data.user.id
- * @property {boolean} data.user.includesDistrictOwnedData
- * @property {boolean} data.user.isCoachingLoggedInUser
- * @property {boolean} data.user.isMidsignupPhantom
- * @property {boolean} data.user.isPhantom
- * @property {boolean} data.user.isSelf
- * @property {string} data.user.kaid
- * @property {string} data.user.nickname
- * @property {number} data.user.points
- * @property {Object} data.user.profile
- * @property {"Profile"} data.user.profile.__typename
- * @property {string} data.user.profile.accessLevel
- * @property {string} data.user.profileRoot
- * @property {string|null} data.user.username
+ * @property {boolean} data.actorIsImpersonatingUser
+ * @property {GetFullUserProfileUser|null} data.user
+ */
+
+/**
+ * @typedef {Object} GetFullUserProfileUser
+ * @property {"User"} user.__typename
+ * @property {string} user.bio
+ * @property {boolean} user.canAccessDistrictsHomepage
+ * @property {number} user.countVideosCompleted
+ * @property {string} user.id
+ * @property {boolean} user.includesDistrictOwnedData
+ * @property {boolean} user.isCoachingLoggedInUser
+ * @property {boolean} user.isMidsignupPhantom
+ * @property {boolean} user.isPhantom
+ * @property {boolean} user.isSelf
+ * @property {string} user.kaid
+ * @property {string} user.nickname
+ * @property {0} user.points
+ * @property {Object} user.profile
+ * @property {"Profile"} user.profile.__typename
+ * @property {string} user.profile.accessLevel
+ * @property {string} user.profileRoot
+ * @property {string|null} user.username
  */

@@ -250,32 +250,34 @@ declare module "profile/getProfileInfo" {
      */
     function getProfileInfo(cookies: Array<string>, user: string): Promise<GetFullUserProfile>;
     namespace getProfileInfo {
-        export { GetFullUserProfile };
+        export { GetFullUserProfile, GetFullUserProfileUser };
     }
     type GetFullUserProfile = {
         data: {
-            user: {
-                __typename: string;
-                bio: string;
-                canAccessDistrictsHomepage: boolean;
-                countVideosCompleted: number;
-                id: string;
-                includesDistrictOwnedData: boolean;
-                isCoachingLoggedInUser: boolean;
-                isMidsignupPhantom: boolean;
-                isPhantom: boolean;
-                isSelf: boolean;
-                kaid: string;
-                nickname: string;
-                points: number;
-                profile: {
-                    __typename: "Profile";
-                    accessLevel: string;
-                };
-                profileRoot: string;
-                username: string | null;
-            };
+            actorIsImpersonatingUser: boolean;
+            user: GetFullUserProfileUser | null;
         };
+    };
+    type GetFullUserProfileUser = {
+        __typename: "User";
+        bio: string;
+        canAccessDistrictsHomepage: boolean;
+        countVideosCompleted: number;
+        id: string;
+        includesDistrictOwnedData: boolean;
+        isCoachingLoggedInUser: boolean;
+        isMidsignupPhantom: boolean;
+        isPhantom: boolean;
+        isSelf: boolean;
+        kaid: string;
+        nickname: string;
+        points: 0;
+        profile: {
+            __typename: "Profile";
+            accessLevel: string;
+        };
+        profileRoot: string;
+        username: string | null;
     };
 }
 declare module "queries/avatarDataForProfile" {
@@ -285,30 +287,34 @@ declare module "queries/avatarDataForProfile" {
 declare module "profile/avatarDataForProfile" {
     export = avatarDataForProfile;
     /**
-     * Get a user's avatar information given their username or kaid
+     * Get a user's avatar information given their kaid
      *
      * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} user - The requested user's username or kaid
+     * @param {string} kaid - The requested user's kaid
      *
      * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
      */
-    function avatarDataForProfile(cookies: Array<string>, user: string): Promise<AvatarDataForProfile>;
+    function avatarDataForProfile(cookies: Array<string>, kaid: string): Promise<AvatarDataForProfile>;
     namespace avatarDataForProfile {
-        export { AvatarDataForProfile };
+        export { AvatarDataForProfile, AvatarDataForProfileUser };
     }
     type AvatarDataForProfile = {
         data: {
-            user: {
-                __typename: "User";
-                avatar: {
-                    __typename: "Avatar";
-                    imageSrc: string;
-                    name: string;
-                };
-                id: string;
-                kaid: string;
-            };
+            user: AvatarDataForProfileUser | null;
         };
+    };
+    type AvatarDataForProfileUser = {
+        __typename: "User";
+        avatar: {
+            __typename: "Avatar";
+            imageSrc: string;
+            name: string;
+        };
+        id: string;
+        /**
+         * *
+         */
+        kaid: string;
     };
 }
 declare module "programs/sortingType" {
