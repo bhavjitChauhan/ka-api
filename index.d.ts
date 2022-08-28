@@ -297,15 +297,17 @@ declare module "profile/avatarDataForProfile" {
         export { AvatarDataForProfile };
     }
     type AvatarDataForProfile = {
-        user: {
-            __typename: "User";
-            avatar: {
-                __typename: "Avatar";
-                imageSrc: string;
-                name: string;
+        data: {
+            user: {
+                __typename: "User";
+                avatar: {
+                    __typename: "Avatar";
+                    imageSrc: string;
+                    name: string;
+                };
+                id: string;
+                kaid: string;
             };
-            id: string;
-            kaid: string;
         };
     };
 }

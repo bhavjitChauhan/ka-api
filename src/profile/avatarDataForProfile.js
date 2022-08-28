@@ -34,12 +34,13 @@ module.exports = avatarDataForProfile;
 
 /**
  * @typedef {Object} AvatarDataForProfile
- * @property {Object} user
- * @property {"User"} user.__typename
- * @property {Object} user.avatar
- * @property {"Avatar"} user.avatar.__typename
- * @property {string} user.avatar.imageSrc
- * @property {string} user.avatar.name
- * @property {string} user.id
- * @property {string} user.kaid
+ * @property {Object} data
+ * @property {Object} data.user
+ * @property {"User"} data.user.__typename
+ * @property {Object} data.user.avatar
+ * @property {"Avatar"} data.user.avatar.__typename
+ * @property {string} data.user.avatar.imageSrc
+ * @property {string} data.user.avatar.name
+ * @property {string} data.user.id
+ * @property {string} data.user.kaid
  */
