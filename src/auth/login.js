@@ -48,6 +48,7 @@ async function login(username, password) {
     }
 
     let sessionCookies = await getSessionCookies();
+    if (!sessionCookies) throw new Error("Failed to get session cookies");
 
     sessionCookies.push(
         `fkey=${generateFKey()}; expires=${new Date().toUTCString()}; samesite=Lax; path=/`
@@ -58,6 +59,11 @@ async function login(username, password) {
         username,
         password
     );
+    if (!loginCookies)
+        throw new Error(
+            "Failed to get login cookies, check your username and password"
+        );
+
     let cookies = mergeCookies(sessionCookies, loginCookies);
 
     return cookies;

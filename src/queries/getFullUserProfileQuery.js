@@ -1,6 +1,4 @@
-const GET_FULL_USER_PROFILE_QUERY =
-    "" +
-    `query getFullUserProfile($kaid: String, $username: String) {
+const GET_FULL_USER_PROFILE_QUERY = `query getFullUserProfile($kaid: String, $username: String) {
   user(kaid: $kaid, username: $username) {
     id
     kaid

@@ -2,11 +2,12 @@
   "name": "ka-api",
   "version": "1.6.0",
   "description": "API for KA's computer science program.",
-  "main": "src/ka_api.js",
+  "main": "src/ka-api.js",
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "format": "prettier --write src/**/*.js"
+    "format": "prettier --write src/**/*.js",
+    "types": "tsc ./src/ka-api.js --declaration --allowJs --emitDeclarationOnly --outFile index"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
   }
 }
