@@ -23,7 +23,7 @@ async function getProfileWidgets(cookies, kaid) {
     let url =
         "https://www.khanacademy.org/api/internal/graphql/getProfileWidgets?lang=en";
 
-    if (!cookies) {
+    if (cookies) {
         return makeAuthenticatedPostRequest(cookies, url, body).then(
             (result) => result.data
         );
