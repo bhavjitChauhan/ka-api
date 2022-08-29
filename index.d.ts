@@ -243,12 +243,12 @@ declare module "profile/getProfileInfo" {
     /**
      * Get a user's profile information given their username or KAID
      *
-     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
      * @param {string} user - The requested user's username or KAID
      *
      * @returns {Promise<GetFullUserProfile>} - The user's profile information
      */
-    function getProfileInfo(cookies: Array<string>, user: string): Promise<GetFullUserProfile>;
+    function getProfileInfo(cookies: Array<string> | null, user: string): Promise<GetFullUserProfile>;
     namespace getProfileInfo {
         export { GetFullUserProfile, GetFullUserProfileUser };
     }
@@ -289,12 +289,12 @@ declare module "profile/getProfileWidgets" {
     /**
      * Get a user's profile information given their KAID
      *
-     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
      * @param {string} kaid - The requested user's KAID
      *
      * @returns {Promise<GetProfileWidgets>} - The user's profile information
      */
-    function getProfileWidgets(cookies: Array<string>, kaid: string): Promise<GetProfileWidgets>;
+    function getProfileWidgets(cookies: Array<string> | null, kaid: string): Promise<GetProfileWidgets>;
     namespace getProfileWidgets {
         export { GetProfileWidgets, GetProfileWidgetsData, GetProfileWidgetsUser, GetProfileWidgetsUserSummary, GetFullUserProfileProgram, getProfileWidgetsErrors, getProfileWidgetsErrorsMessage, getProfileWidgetsErrorsMessageExtensions };
     }
@@ -365,12 +365,12 @@ declare module "profile/avatarDataForProfile" {
     /**
      * Get a user's avatar information given their KAID
      *
-     * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
      * @param {string} kaid - The requested user's KAID
      *
      * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
      */
-    function avatarDataForProfile(cookies: Array<string>, kaid: string): Promise<AvatarDataForProfile>;
+    function avatarDataForProfile(cookies: Array<string> | null, kaid: string): Promise<AvatarDataForProfile>;
     namespace avatarDataForProfile {
         export { AvatarDataForProfile, AvatarDataForProfileUser };
     }
@@ -402,7 +402,7 @@ declare module "programs/sortingType" {
 }
 declare module "profile/getUserPrograms" {
     export type GetUserPrograms = {
-        cursor: string;
+        cursor: string | undefined;
         scratchpads: Array<GetUserProgramsScratchpad>;
         complete: boolean;
     };

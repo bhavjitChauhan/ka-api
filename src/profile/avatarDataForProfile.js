@@ -3,11 +3,12 @@ const {
 } = require("../request/authenticatedRequest.js");
 
 const AVATAR_DATA_FOR_PROFILE_QUERY = require("../queries/avatarDataForProfile.js");
+const { default: axios } = require("axios");
 
 /**
  * Get a user's avatar information given their KAID
  *
- * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
  * @param {string} kaid - The requested user's KAID
  *
  * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
@@ -22,9 +23,13 @@ async function avatarDataForProfile(cookies, kaid) {
     let url =
         "https://www.khanacademy.org/api/internal/graphql/avatarDataForProfile?lang=en";
 
-    return makeAuthenticatedPostRequest(cookies, url, body).then(
-        (result) => result.data
-    );
+    if (cookies) {
+        return makeAuthenticatedPostRequest(cookies, url, body).then(
+            (result) => result.data
+        );
+    } else {
+        return axios.post(url, body).then((result) => result.data);
+    }
 }
 
 module.exports = avatarDataForProfile;

@@ -61,7 +61,7 @@ module.exports = {
 
 /**
  * @typedef {Object} GetUserPrograms
- * @property {string} cursor
+ * @property {string|undefined} cursor
  * @property {Array<GetUserProgramsScratchpad>} scratchpads
  * @property {boolean} complete
  */

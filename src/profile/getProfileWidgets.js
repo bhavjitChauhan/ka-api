@@ -3,11 +3,12 @@ const {
 } = require("../request/authenticatedRequest.js");
 
 const GET_PROFILE_WIDGETS_QUERY = require("../queries/getProfileWidgets.js");
+const { default: axios } = require("axios");
 
 /**
  * Get a user's profile information given their KAID
  *
- * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
  * @param {string} kaid - The requested user's KAID
  *
  * @returns {Promise<GetProfileWidgets>} - The user's profile information
@@ -22,9 +23,13 @@ async function getProfileWidgets(cookies, kaid) {
     let url =
         "https://www.khanacademy.org/api/internal/graphql/getProfileWidgets?lang=en";
 
-    return makeAuthenticatedPostRequest(cookies, url, body).then(
-        (result) => result.data
-    );
+    if (!cookies) {
+        return makeAuthenticatedPostRequest(cookies, url, body).then(
+            (result) => result.data
+        );
+    } else {
+        return axios.post(url, body).then((result) => result.data);
+    }
 }
 
 module.exports = getProfileWidgets;

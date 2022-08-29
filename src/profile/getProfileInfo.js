@@ -3,11 +3,12 @@ const {
 } = require("../request/authenticatedRequest.js");
 
 const GET_FULL_USER_PROFILE_QUERY = require("../queries/getFullUserProfileQuery.js");
+const { default: axios } = require("axios");
 
 /**
  * Get a user's profile information given their username or KAID
  *
- * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>|null} cookies - A list of cookies returned from the server (set-cookie header)
  * @param {string} user - The requested user's username or KAID
  *
  * @returns {Promise<GetFullUserProfile>} - The user's profile information
@@ -25,9 +26,13 @@ async function getProfileInfo(cookies, user) {
     let url =
         "https://www.khanacademy.org/api/internal/graphql/getFullUserProfile?lang=en";
 
-    return makeAuthenticatedPostRequest(cookies, url, body).then(
-        (result) => result.data
-    );
+    if (cookies) {
+        return makeAuthenticatedPostRequest(cookies, url, body).then(
+            (result) => result.data
+        );
+    } else {
+        return axios.post(url, body).then((result) => result.data);
+    }
 }
 
 module.exports = getProfileInfo;
