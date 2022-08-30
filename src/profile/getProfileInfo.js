@@ -44,24 +44,65 @@ module.exports = getProfileInfo;
  * @property {GetFullUserProfileUser|null} data.user
  */
 
-/**
+/** 
  * @typedef {Object} GetFullUserProfileUser
- * @property {"User"} user.__typename
- * @property {string} user.bio
- * @property {boolean} user.canAccessDistrictsHomepage
- * @property {number} user.countVideosCompleted
- * @property {string} user.id
- * @property {boolean} user.includesDistrictOwnedData
- * @property {boolean} user.isCoachingLoggedInUser
- * @property {boolean} user.isMidsignupPhantom
- * @property {boolean} user.isPhantom
- * @property {boolean} user.isSelf
- * @property {string} user.kaid
- * @property {string} user.nickname
- * @property {0} user.points
- * @property {Object} user.profile
- * @property {"Profile"} user.profile.__typename
- * @property {string} user.profile.accessLevel
- * @property {string} user.profileRoot
- * @property {string|null} user.username
+ * @property {"User"} __typename
+ * @property {string|null} authEmails
+ * @property {boolean|null} autocontinueOn
+ * @property {string|null} badgeCounts
+ * @property {string} bio
+ * @property {boolean} canAccessDistrictsHomepage
+ * @property {boolean|null} canHellban
+ * @property {boolean|null} canMessageUsers
+ * @property {boolean|null} canModifyCoaches
+ * @property {number} countVideosCompleted
+ * @property {string|null} email
+ * @property {string|null} gaUserId
+ * @property {boolean|null} hasChildren
+ * @property {boolean|null} hasClasses
+ * @property {boolean|null} hasCoach
+ * @property {boolean|null} hasStudents
+ * @property {boolean|null} hideVisual
+ * @property {string|null} homepageUrl
+ * @property {string} id
+ * @property {boolean} includesDistrictOwnedData
+ * @property {boolean|null} isChild
+ * @property {boolean} isCoachingLoggedInUser
+ * @property {boolean|null} isCreator
+ * @property {boolean|null} isCurator
+ * @property {boolean|null} isDataCollectible
+ * @property {boolean|null} isDeveloper
+ * @property {boolean} isMidsignupPhantom
+ * @property {boolean|null} isModerator
+ * @property {boolean|null} isOrphan
+ * @property {boolean|null} isParent
+ * @property {boolean} isPhantom
+ * @property {boolean|null} isPublisher
+ * @property {boolean|null} isSatStudent
+ * @property {boolean} isSelf
+ * @property {boolean|null} isTeacher
+ * @property {string|null} joined
+ * @property {string} kaid
+ * @property {string|null} key
+ * @property {boolean|null} muteVideos
+ * @property {number|null} newNotificationCount
+ * @property {string} nickname
+ * @property {boolean|null} noColorInVideos
+ * @property {unknown[]|null} pendingEmailVerifications
+ * @property {number} points
+ * @property {unknown|null} preferredKaLocale
+ * @property {boolean|null} prefersReducedMotion
+ * @property {object} profile
+ * @property {"Profile"} profile.__typename
+ * @property {string} profile.accessLevel
+ * @property {string} profileRoot
+ * @property {string|null} qualarooId
+ * @property {boolean|null} shouldShowAgeCheck
+ * @property {boolean|null} showCaptions
+ * @property {unknown|null} signupDataIfUnverified
+ * @property {boolean|null} soundOn
+ * @property {boolean|null} tosAccepted
+ * @property {unknown|null} underAgeGate
+ * @property {string|null} userId
+ * @property {string|null} username
  */

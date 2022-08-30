@@ -260,23 +260,64 @@ declare module "profile/getProfileInfo" {
     };
     type GetFullUserProfileUser = {
         __typename: "User";
+        authEmails: string | null;
+        autocontinueOn: boolean | null;
+        badgeCounts: string | null;
         bio: string;
         canAccessDistrictsHomepage: boolean;
+        canHellban: boolean | null;
+        canMessageUsers: boolean | null;
+        canModifyCoaches: boolean | null;
         countVideosCompleted: number;
+        email: string | null;
+        gaUserId: string | null;
+        hasChildren: boolean | null;
+        hasClasses: boolean | null;
+        hasCoach: boolean | null;
+        hasStudents: boolean | null;
+        hideVisual: boolean | null;
+        homepageUrl: string | null;
         id: string;
         includesDistrictOwnedData: boolean;
+        isChild: boolean | null;
         isCoachingLoggedInUser: boolean;
+        isCreator: boolean | null;
+        isCurator: boolean | null;
+        isDataCollectible: boolean | null;
+        isDeveloper: boolean | null;
         isMidsignupPhantom: boolean;
+        isModerator: boolean | null;
+        isOrphan: boolean | null;
+        isParent: boolean | null;
         isPhantom: boolean;
+        isPublisher: boolean | null;
+        isSatStudent: boolean | null;
         isSelf: boolean;
+        isTeacher: boolean | null;
+        joined: string | null;
         kaid: string;
+        key: string | null;
+        muteVideos: boolean | null;
+        newNotificationCount: number | null;
         nickname: string;
-        points: 0;
+        noColorInVideos: boolean | null;
+        pendingEmailVerifications: unknown[] | null;
+        points: number;
+        preferredKaLocale: unknown | null;
+        prefersReducedMotion: boolean | null;
         profile: {
             __typename: "Profile";
             accessLevel: string;
         };
         profileRoot: string;
+        qualarooId: string | null;
+        shouldShowAgeCheck: boolean | null;
+        showCaptions: boolean | null;
+        signupDataIfUnverified: unknown | null;
+        soundOn: boolean | null;
+        tosAccepted: boolean | null;
+        underAgeGate: unknown | null;
+        userId: string | null;
         username: string | null;
     };
 }
@@ -296,7 +337,7 @@ declare module "profile/getProfileWidgets" {
      */
     function getProfileWidgets(cookies: Array<string> | null, kaid: string): Promise<GetProfileWidgets>;
     namespace getProfileWidgets {
-        export { GetProfileWidgets, GetProfileWidgetsData, GetProfileWidgetsUser, GetProfileWidgetsUserSummary, GetFullUserProfileProgram, getProfileWidgetsErrors, getProfileWidgetsErrorsMessage, getProfileWidgetsErrorsMessageExtensions };
+        export { GetProfileWidgets, GetProfileWidgetsData, GetProfileWidgetsUser, GetProfileWidgetsUserSummary, GetFullUserProfileProgram, GetFullUserProfileProgramDeprecated, getProfileWidgetsErrors, getProfileWidgetsErrorsMessage, getProfileWidgetsErrorsMessageExtensions };
     }
     type GetProfileWidgets = {
         data: GetProfileWidgetsData | undefined;
@@ -308,18 +349,15 @@ declare module "profile/getProfileWidgets" {
     };
     type GetProfileWidgetsUser = {
         __typename: "User";
-        badgeCounts: null;
+        badgeCounts: string | null;
         id: string;
-        isChild: null;
+        isChild: unknown | null;
         kaid: string;
         profile: {
             __typename: "Profile";
-            programs: [];
+            programs: Array<GetFullUserProfileProgram>;
         };
-        /**
-         * *
-         */
-        programsDeprecated: Array<GetFullUserProfileProgram>;
+        programsDeprecated: Array<GetFullUserProfileProgramDeprecated>;
     };
     type GetProfileWidgetsUserSummary = {
         __typename: "UserSummary";
@@ -337,8 +375,20 @@ declare module "profile/getProfileWidgets" {
     };
     type GetFullUserProfileProgram = {
         __typename: "Program";
-        authorKaid: null;
-        authorNickname: null;
+        authorKaid: string | null;
+        authorNickname: string | null;
+        deleted: unknown | null;
+        displayableSpinoffCount: number;
+        imagePath: string;
+        key: string;
+        sumVotesIncremented: number;
+        translatedTitle: string;
+        url: string;
+    };
+    type GetFullUserProfileProgramDeprecated = {
+        __typename: "Program";
+        authorKaid: string | null;
+        authorNickname: string | null;
         displayableSpinoffCount: number;
         imagePath: string;
         key: string;

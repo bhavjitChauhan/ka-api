@@ -49,14 +49,14 @@ module.exports = getProfileWidgets;
 /**
  * @typedef {Object} GetProfileWidgetsUser
  * @property {"User"} __typename
- * @property {null} badgeCounts
+ * @property {string|null} badgeCounts
  * @property {string} id
- * @property {null} isChild
+ * @property {unknown|null} isChild
  * @property {string} kaid
  * @property {object} profile
  * @property {"Profile"} profile.__typename
- * @property {[]} profile.programs
- * @property {Array<GetFullUserProfileProgram>} programsDeprecated *
+ * @property {Array<GetFullUserProfileProgram} profile.programs
+ * @property {Array<GetFullUserProfileProgramDeprecated>} programsDeprecated
  */
 
 /**
@@ -77,8 +77,22 @@ module.exports = getProfileWidgets;
 /**
  * @typedef {Object} GetFullUserProfileProgram
  * @property {"Program"} __typename
- * @property {null} authorKaid
- * @property {null} authorNickname
+ * @property {string|null} authorKaid
+ * @property {string|null} authorNickname
+ * @property {unknown|null} deleted
+ * @property {number} displayableSpinoffCount
+ * @property {string} imagePath
+ * @property {string} key
+ * @property {number} sumVotesIncremented
+ * @property {string} translatedTitle
+ * @property {string} url
+ */
+
+/**
+ * @typedef {Object} GetFullUserProfileProgramDeprecated
+ * @property {"Program"} __typename
+ * @property {string|null} authorKaid
+ * @property {string|null} authorNickname
  * @property {number} displayableSpinoffCount
  * @property {string} imagePath
  * @property {string} key
