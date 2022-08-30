@@ -44,7 +44,7 @@ module.exports = getProfileInfo;
  * @property {GetFullUserProfileUser|null} data.user
  */
 
-/** 
+/**
  * @typedef {Object} GetFullUserProfileUser
  * @property {"User"} __typename
  * @property {string|null} authEmails

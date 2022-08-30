@@ -66,7 +66,7 @@ module.exports = getProfileWidgets;
  * @property {"UserStatistics"} statistics.__typename
  * @property {number} statistics.answers
  * @property {number} statistics.comments
- * @property {number} statistics.flags
+ * @property {0} statistics.flags
  * @property {number} statistics.projectanswers
  * @property {number} statistics.projectquestions
  * @property {number} statistics.questions

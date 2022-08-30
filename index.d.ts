@@ -365,7 +365,7 @@ declare module "profile/getProfileWidgets" {
             __typename: "UserStatistics";
             answers: number;
             comments: number;
-            flags: number;
+            flags: 0;
             projectanswers: number;
             projectquestions: number;
             questions: number;
