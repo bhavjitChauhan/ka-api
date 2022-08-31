@@ -591,12 +591,249 @@ declare module "config" {
     export const filterBadwords: boolean;
 }
 declare module "programs/programs" {
+    export type ShowScratchpad = {
+        scratchpad: {
+            contentKindCode: string;
+            newUrlPath: string;
+            key: string;
+            relativeUrl: string;
+            originScratchpadId: number | null;
+            forkedFromTopic: string;
+            height: number;
+            date: string;
+            originSimilarity: number;
+            id: number;
+            editSlug: string;
+            category: unknown | null;
+            originRevisionId: number | null;
+            title: string;
+            translatedProjectEval: unknown | null;
+            sendToPeers: boolean;
+            nodeSlug: string;
+            isChallenge: boolean;
+            width: number;
+            youtubeId: unknown | null;
+            docsUrlPath: string;
+            contentKind: string;
+            type: string;
+            revision: {
+                tests: unknown | null;
+                code: string;
+                created: string;
+                folds: [number, number][];
+                translatedMp3Url: unknown | null;
+                hasAudio: boolean;
+                mp3Url: unknown | null;
+                editorType: string;
+                playback: unknown | null;
+                youtubeId: unknown | null;
+                configVersion: number;
+                id: number;
+            };
+            imagePath: string;
+            nodeType: string;
+            description: string;
+            isProject: boolean;
+            tags: unknown[];
+            translatedDescription: string;
+            byChild: boolean;
+            difficulty: unknown | null;
+            originIsProject: boolean;
+            hideFromHotlist: boolean;
+            canvasOnly: boolean;
+            slug: string;
+            spinoffCount: number;
+            kind: string;
+            created: string;
+            url: string;
+            imageUrl: string;
+            isPublished: boolean;
+            sumVotesIncremented: number;
+            defaultUrlPath: unknown | null;
+            flags: unknown[];
+            isProjectOrFork: boolean;
+            translatedProjectEvalTips: unknown | null;
+            userAuthoredContentType: string;
+            kaid: string;
+            translatedTitle: string;
+        };
+        embedded: boolean;
+        creatorProfile: {
+            isSelf: boolean;
+            countVideosCompleted: number;
+            isChildAccount: boolean;
+            hasChangedAvatar: boolean;
+            soundOn: boolean;
+            affiliation: unknown | null;
+            autocontinueOn: boolean;
+            backgroundSrc: string;
+            noColorInVideos: boolean;
+            hideVisual: boolean;
+            muteVideos: unknown | null;
+            isDataCollectible: boolean;
+            avatarName: string;
+            globalPermissions: any;
+            affiliation_country_code: unknown | null;
+            profileRoot: string;
+            email: string;
+            username: string;
+            bio: string;
+            backgroundName: string;
+            isOrphan: boolean;
+            isPublic: boolean;
+            background: {
+                translatedDisplayName: string;
+                imagePath: string;
+                displayName: string;
+                name: string;
+                thumbSrc: string;
+                translatedRequirements: any;
+                rewardType: string;
+                thumbnailSrc: string;
+                imageSrc: string;
+                thumbnailPath: string;
+                thumbPath: string;
+            };
+            isPhantom: boolean;
+            isMidsignupPhantom: boolean;
+            nickname: string;
+            kaid: string;
+            prefersReducedMotion: boolean;
+            dateJoined: unknown | null;
+            avatarSrc: string;
+            userLocation: unknown | null;
+            points: number;
+            avatar: {
+                translatedDisplayName: string;
+                imagePath: string;
+                displayName: string;
+                name: string;
+                partType: string;
+                forModel: string;
+                translatedRequirements: any;
+                rewardType: string;
+                thumbnailSrc: string;
+                imageSrc: string;
+                thumbnailPath: string;
+            };
+            includesUserDataInfo: boolean;
+            publicBadges: any;
+        };
+        discussion: {
+            showProjectFeedback: boolean;
+            focusId: string;
+            isOwner: boolean;
+            restrictPosting: boolean;
+            focusKind: string;
+            canEdit: boolean;
+        };
+        upVoted: boolean;
+        originScratchpad: unknown | null;
+        topic: {
+            curriculumKey: unknown | null;
+            relativeUrl: string;
+            userAuthoredContentTypesInfo: {
+                new: string;
+                type: string;
+            };
+            extendedSlug: string;
+            currentRevisionKey: string;
+            renderType: string;
+            topicPageUrl: string;
+            alternateSlugs: string[];
+            hasPeerReviewedProjects: boolean;
+            id: string;
+            domainSlug: string;
+            backgroundImageCaption: string;
+            userAuthoredContentTypes: string[];
+            creationDate: string;
+            hide: boolean;
+            title: string;
+            webUrl: string;
+            nodeSlug: string;
+            deletedModTime: string;
+            endorsement: unknown | null;
+            iconSrc: string;
+            contentKind: string;
+            standaloneTitle: string;
+            translatedStandaloneTitle: string;
+            twitterUrl: string;
+            brandingImageUrl: string;
+            description: string;
+            tags: any;
+            deleted: boolean;
+            hasUserAuthoredContentTypes: boolean;
+            translatedDescription: string;
+            inKnowledgeMap: boolean;
+            gplusUrl: string;
+            doNotPublish: boolean;
+            backgroundImageUrl: string;
+            childData: {
+                kind: string;
+                id: string;
+            };
+            slug: string;
+            kind: string;
+            listedLocales: string[];
+            contentId: string;
+            logoImageUrl: string;
+            kaUrl: string;
+            sha: string;
+            facebookUrl: string;
+            curation: {
+                blacklist: string[];
+                modules: {
+                    kind: string;
+                    actions: {
+                        url: string;
+                        text: string;
+                        content_descriptor: string;
+                    };
+                    title: string;
+                    call_to_action: string;
+                    link: string;
+                    description: string;
+                };
+            };
+            translatedTitle: string;
+        };
+        flaggedByUser: boolean;
+        downVoted: boolean;
+        userScratchpad: {
+            kind: string;
+            msWatched: number;
+            isProject: boolean;
+            msDuration: unknown | null;
+            lastMsWatched: number;
+            challengeStatus: number;
+            scratchpadKey: string;
+            fullyWatched: boolean;
+            isComplete: boolean;
+            isChallenge: boolean;
+            difficulty: unknown | null;
+            points: number;
+            stashedCode: string;
+            lastUpdated: string;
+            key: string;
+            userKey: string;
+            id: string;
+            viewed: boolean;
+        };
+    };
     /**
      * Returns the program info, given the program's ID
      *
-     * @param {string} id The program's ID
+     * @param {number|string} id The program's ID
      */
-    export function getProgramJSON(id: string): Promise<any>;
+    export function getProgramJSON(id: number | string): Promise<any>;
+    /**
+     * Returns the program and author info, given the program's ID
+     *
+     * @param {number|string} id The program's ID
+     *
+     * @return {ShowScratchpad|string}
+     */
+    export function showScratchpad(id: number | string): ShowScratchpad | string;
     /**
      * Create a new program on KA's servers
      *
@@ -610,29 +847,29 @@ declare module "programs/programs" {
      * Creates a spin-off of another program
      *
      * @param {Array<string>} cookies - A list of cookies returned from the server (set-cookie header)
-     * @param {string} originalProgram - The original program's ID
+     * @param {number|string} originalProgram - The original program's ID
      * @param {string} code - The code in the spinoff
      * @param {object} [settings] Settings to override the JSON request
      * @param {object} [originalProgramJSON] The program json if already retrieved (to reduce unnecessary requests)
      */
-    export function spinOffProgram(cookies: Array<string>, originalProgram: string, code: string, settings?: object, originalProgramJSON?: object): Promise<any>;
+    export function spinOffProgram(cookies: Array<string>, originalProgram: number | string, code: string, settings?: object, originalProgramJSON?: object): Promise<any>;
     /**
      * Updates an existing program based on the parameters
      *
      * @param {Array} cookies An array of set-cookie response headers from axios
-     * @param {string} programId The program's ID being updated
+     * @param {number|string} programId The program's ID being updated
      * @param {string} code The code
      * @param {object} [settings] Settings to override the JSON request
      * @param {object} [programJson] The program json if already retrieved (to reduce unnecessary requests)
      */
-    export function updateProgram(cookies: any[], programId: string, code: string, settings?: object, programJson?: object): Promise<any>;
+    export function updateProgram(cookies: any[], programId: number | string, code: string, settings?: object, programJson?: object): Promise<any>;
     /**
      * Deletes a program
      *
      * @param {Array} cookies - An array of set-cookie response headers from axios
-     * @param {string} programId - The program ID
+     * @param {number|string} programId - The program ID
      */
-    export function deleteProgram(cookies: any[], programId: string): Promise<any>;
+    export function deleteProgram(cookies: any[], programId: number | string): Promise<any>;
 }
 declare module "programs/getSpinoffs" {
     export function getSpinoffs(programId: any, sortingType: any, limit: any): Promise<any>;
@@ -675,6 +912,7 @@ declare module "ka-api" {
     export const programs: {
         getSpinoffs: typeof import("programs/getSpinoffs").getSpinoffs;
         getProgramJSON: typeof import("programs/programs").getProgramJSON;
+        showScratchpad: typeof import("programs/programs").showScratchpad;
         newProgram: typeof import("programs/programs").newProgram;
         spinOffProgram: typeof import("programs/programs").spinOffProgram;
         updateProgram: typeof import("programs/programs").updateProgram;
