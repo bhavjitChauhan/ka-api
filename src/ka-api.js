@@ -36,4 +36,8 @@ module.exports.request = {
     ...require("./request/authenticatedRequest.js"),
 };
 
+module.exports.utils = {
+    ...require("./utils.js"),
+};
+
 module.exports.config = require("./config.js");

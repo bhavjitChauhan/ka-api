@@ -874,6 +874,37 @@ declare module "programs/programs" {
 declare module "programs/getSpinoffs" {
     export function getSpinoffs(programId: any, sortingType: any, limit: any): Promise<any>;
 }
+declare module "utils" {
+    export const VALID_KAID_LENGTHS: number[];
+    export const KaidRegex: RegExp;
+    export const VALID_PROGRAM_ID_LENGTHS: number[];
+    export const ProgramIDRegex: RegExp;
+    /**
+     * Checks if the input is a valid KAID
+     *
+     * @param {string} input
+     * @returns {boolean}
+     */
+    export function isValidKaid(input: string): boolean;
+    /**
+     * Checks if the input is a valid program ID
+     *
+     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L1
+     *
+     * @param {number|string} input
+     * @returns {boolean}
+     */
+    export function isValidProgramID(input: number | string): boolean;
+    /**
+     * Extracts the program ID from a program URL
+     *
+     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L16
+     *
+     * @param {string} url
+     * @returns {string}
+     */
+    export function extractProgramID(url: string): string;
+}
 declare module "ka-api" {
     export const auth: {
         getAuthenticatedHeader: typeof import("auth/getAuthenticatedHeader");
@@ -923,6 +954,15 @@ declare module "ka-api" {
         makeAuthenticatedPostRequest: typeof import("request/authenticatedRequest").makeAuthenticatedPostRequest;
         makeAuthenticatedPutRequest: typeof import("request/authenticatedRequest").makeAuthenticatedPutRequest;
         makeAuthenticatedDeleteRequest: typeof import("request/authenticatedRequest").makeAuthenticatedDeleteRequest;
+    };
+    export const utils: {
+        VALID_KAID_LENGTHS: number[];
+        KaidRegex: RegExp;
+        VALID_PROGRAM_ID_LENGTHS: number[];
+        ProgramIDRegex: RegExp;
+        isValidKaid: typeof import("utils").isValidKaid;
+        isValidProgramID: typeof import("utils").isValidProgramID;
+        extractProgramID: typeof import("utils").extractProgramID;
     };
     export const config: {
         filterBadwords: boolean;
