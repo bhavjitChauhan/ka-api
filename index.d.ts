@@ -875,6 +875,13 @@ declare module "programs/getSpinoffs" {
     export function getSpinoffs(programId: any, sortingType: any, limit: any): Promise<any>;
 }
 declare module "utils" {
+    /**
+     * Gets the latency of the Khan Academy API
+     *
+     * @param {Array|undefined} cookies
+     * @returns {Promise<number|null>}
+     */
+    export function getLatency(cookies: any[] | undefined): Promise<number | null>;
     export const VALID_KAID_LENGTHS: number[];
     export const KaidRegex: RegExp;
     export const VALID_PROGRAM_ID_LENGTHS: number[];
@@ -956,6 +963,7 @@ declare module "ka-api" {
         makeAuthenticatedDeleteRequest: typeof import("request/authenticatedRequest").makeAuthenticatedDeleteRequest;
     };
     export const utils: {
+        getLatency: typeof import("utils").getLatency;
         VALID_KAID_LENGTHS: number[];
         KaidRegex: RegExp;
         VALID_PROGRAM_ID_LENGTHS: number[];

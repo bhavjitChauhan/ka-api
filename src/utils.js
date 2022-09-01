@@ -1,3 +1,55 @@
+const { default: axios } = require("axios");
+const getAuthenticatedHeader = require("./auth/getAuthenticatedHeader");
+
+/**
+ * Gets the latency of the Khan Academy API
+ *
+ * @param {Array|undefined} cookies
+ * @returns {Promise<number|null>}
+ */
+async function getLatency(cookies) {
+    const instance = axios.create();
+    instance.interceptors.request.use(
+        (config) => {
+            const newConfig = { ...config };
+            newConfig.metadata = { startTime: performance.now() };
+            return newConfig;
+        },
+        (error) => Promise.reject(error)
+    );
+    instance.interceptors.response.use(
+        (response) => {
+            const newRes = { ...response };
+            newRes.config.metadata.endTime = performance.now();
+            newRes.duration =
+                newRes.config.metadata.endTime -
+                newRes.config.metadata.startTime;
+            return newRes;
+        },
+        (error) => {
+            const newError = { ...error };
+            newError.config.metadata.endTime = performance.now();
+            newError.duration =
+                newError.config.metadata.endTime -
+                newError.config.metadata.startTime;
+            return Promise.reject(newError);
+        }
+    );
+
+    let response;
+    if (cookies)
+        response = await instance.get(
+            "https://www.khanacademy.org/_fastly/flags",
+            getAuthenticatedHeader(cookies)
+        );
+    else
+        response = await instance.get(
+            "https://www.khanacademy.org/_fastly/flags"
+        );
+
+    return response.duration ?? null;
+}
+
 const VALID_KAID_LENGTHS = [20, 21, 22, 23, 24, 25];
 const KaidRegex = /^kaid_\d{20,25}$/;
 
@@ -76,6 +128,7 @@ function extractProgramID(url) {
 }
 
 module.exports = {
+    getLatency,
     VALID_KAID_LENGTHS,
     KaidRegex,
     VALID_PROGRAM_ID_LENGTHS,
