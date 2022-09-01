@@ -14,7 +14,7 @@ const GET_FULL_USER_PROFILE_QUERY = require("../queries/getFullUserProfileQuery.
  *
  * @returns {Promise<GetFullUserProfile>} - The user's profile information
  */
-async function getProfileInfo(cookies, user) {
+function getProfileInfo(cookies, user) {
     let variables;
     if (user.startsWith("kaid_")) variables = { kaid: user };
     else variables = { username: user };

@@ -13,7 +13,7 @@ const { default: axios } = require("axios");
  *
  * @returns {Promise<AvatarDataForProfile>} - The user's avatar information
  */
-async function avatarDataForProfile(cookies, kaid) {
+function avatarDataForProfile(cookies, kaid) {
     let body = {
         operationName: "avatarDataForProfile",
         variables: { kaid },

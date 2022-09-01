@@ -14,16 +14,9 @@ const FEEDBACK_QUERY = require("../queries/feedbackQuery");
  * @param {1|2} [sort=1] Sort by 1: Top Voted, 2: Most Recent
  * @param {number} [limit=10] The maximum number of comments to return
  * @param {string} [cursor] The cursor to start from
- * @returns {FeedbackQuery}
+ * @returns {Promise<FeedbackQuery>}
  */
-async function feedbackQuery(
-    cookies,
-    id,
-    type = "COMMENT",
-    sort = 1,
-    limit,
-    cursor
-) {
+function feedbackQuery(cookies, id, type = "COMMENT", sort = 1, limit, cursor) {
     const url = `https://www.khanacademy.org/api/internal/graphql/feedbackQuery`;
     const variables = {
         topicId: id,

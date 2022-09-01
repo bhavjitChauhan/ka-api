@@ -13,7 +13,7 @@ const {
  *
  * @returns {Promise<GetUserPrograms>} The JSON
  */
-async function getUserPrograms(user, sortingType, limit = 1e4) {
+function getUserPrograms(user, sortingType, limit = 1e4) {
     let sortType = 1; // default is most votes
 
     if (sortingType === SORTING_TYPE.MOST_VOTES) {

@@ -149,9 +149,9 @@ declare module "discussion/feedbackQuery" {
      * @param {1|2} [sort=1] Sort by 1: Top Voted, 2: Most Recent
      * @param {number} [limit=10] The maximum number of comments to return
      * @param {string} [cursor] The cursor to start from
-     * @returns {FeedbackQuery}
+     * @returns {Promise<FeedbackQuery>}
      */
-    function feedbackQuery(cookies: Array<string> | null, id: number | string, type?: "QUESTION" | "COMMENT" | "PROJECT_HELP_QUESTION", sort?: 1 | 2, limit?: number, cursor?: string): FeedbackQuery;
+    function feedbackQuery(cookies: Array<string> | null, id: number | string, type?: "QUESTION" | "COMMENT" | "PROJECT_HELP_QUESTION", sort?: 1 | 2, limit?: number, cursor?: string): Promise<FeedbackQuery>;
     namespace feedbackQuery {
         export { FeedbackQuery, FeedbackQueryFeedback, FeedbackQueryFeedbackFeedback, FeedbackQueryError };
     }
@@ -933,9 +933,9 @@ declare module "programs/programs" {
      *
      * @param {number|string} id The program's ID
      *
-     * @return {ShowScratchpad|string}
+     * @return {Promise<ShowScratchpad|undefined>}
      */
-    export function showScratchpad(id: number | string): ShowScratchpad | string;
+    export function showScratchpad(id: number | string): Promise<ShowScratchpad | undefined>;
     /**
      * Create a new program on KA's servers
      *

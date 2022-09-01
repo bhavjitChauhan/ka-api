@@ -13,7 +13,7 @@ const { default: axios } = require("axios");
  *
  * @returns {Promise<GetProfileWidgets>} - The user's profile information
  */
-async function getProfileWidgets(cookies, kaid) {
+function getProfileWidgets(cookies, kaid) {
     let body = {
         operationName: "getProfileWidgets",
         variables: { kaid },
