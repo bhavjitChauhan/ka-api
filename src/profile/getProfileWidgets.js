@@ -84,7 +84,7 @@ module.exports = getProfileWidgets;
  * @property {string} imagePath
  * @property {string} key
  * @property {number} sumVotesIncremented
- * @property {string} translatedTitle
+ * @property {string|null} translatedTitle
  * @property {string} url
  */
 
@@ -97,7 +97,7 @@ module.exports = getProfileWidgets;
  * @property {string} imagePath
  * @property {string} key
  * @property {number} sumVotesIncremented
- * @property {string} translatedTitle
+ * @property {string|null} translatedTitle
  * @property {string} url
  */
 

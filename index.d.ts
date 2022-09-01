@@ -198,7 +198,7 @@ declare module "discussion/feedbackQuery" {
             id: string;
             kind: string;
             relativeUrl: string;
-            translatedTitle: string;
+            translatedTitle: string | null;
         };
         focusUrl: string;
         fromVideoAuthor: boolean;
@@ -468,7 +468,7 @@ declare module "profile/getProfileWidgets" {
         imagePath: string;
         key: string;
         sumVotesIncremented: number;
-        translatedTitle: string;
+        translatedTitle: string | null;
         url: string;
     };
     type GetFullUserProfileProgramDeprecated = {
@@ -479,7 +479,7 @@ declare module "profile/getProfileWidgets" {
         imagePath: string;
         key: string;
         sumVotesIncremented: number;
-        translatedTitle: string;
+        translatedTitle: string | null;
         url: string;
     };
     type getProfileWidgetsErrors = Array<getProfileWidgetsErrorsMessage>;
@@ -553,7 +553,7 @@ declare module "profile/getUserPrograms" {
         key: string;
         authorNickname: string;
         spinoffCount: number;
-        translatedTitle: string;
+        translatedTitle: string | null;
     };
     /**
      *

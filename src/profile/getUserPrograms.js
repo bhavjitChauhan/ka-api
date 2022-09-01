@@ -78,5 +78,5 @@ module.exports = {
  * @property {string} key
  * @property {string} authorNickname
  * @property {number} spinoffCount
- * @property {string} translatedTitle
+ * @property {string|null} translatedTitle
  */

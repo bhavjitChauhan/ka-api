@@ -95,7 +95,7 @@ module.exports = feedbackQuery;
  * @property {string} focus.id
  * @property {string} focus.kind
  * @property {string} focus.relativeUrl
- * @property {string} focus.translatedTitle
+ * @property {string|null} focus.translatedTitle
  * @property {string} focusUrl
  * @property {boolean} fromVideoAuthor
  * @property {string} key
