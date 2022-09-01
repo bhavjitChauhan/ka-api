@@ -1,9 +1,10 @@
+const { default: axios } = require("axios");
+
 const {
     makeAuthenticatedPostRequest,
 } = require("../request/authenticatedRequest.js");
 
 const GET_FULL_USER_PROFILE_QUERY = require("../queries/getFullUserProfileQuery.js");
-const { default: axios } = require("axios");
 
 /**
  * Get a user's profile information given their username or KAID

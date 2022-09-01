@@ -53,9 +53,9 @@ declare module "auth/session" {
     /**
      * Load khanacademy.org and return a list of all the cookies
      *
-     * @returns {Array} A list of cookies
+     * @returns {Array<string>} A list of cookies
      **/
-    export function getSessionCookies(): any[];
+    export function getSessionCookies(): Array<string>;
 }
 declare module "auth/generateFKey" {
     export = generateFKey;
@@ -93,28 +93,28 @@ declare module "request/authenticatedRequest" {
     /**
      * Make a GET request with the proper authentication on Khan Academy
      *
-     * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
      * @param {string} url The url on Khan Academy to make the GET request
      * @param {object} customHeaders Object of custom headers
      *
      * @returns {Promise} A promise that resolves to the response
      */
-    export function makeAuthenticatedGetRequest(cookies: any[], url: string, customHeaders?: object): Promise<any>;
+    export function makeAuthenticatedGetRequest(cookies: Array<string>, url: string, customHeaders?: object): Promise<any>;
     /**
      * Make a POST request with the proper authentication on Khan Academy
      *
-     * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
      * @param {string} url The url on Khan Academy to make the POST request
      * @param {object} body The JSON body of the POST request
      * @param {object} customHeaders Object of custom headers
      *
      * @returns {Promise} A promise that resolves to the response
      */
-    export function makeAuthenticatedPostRequest(cookies: any[], url: string, body: object, customHeaders?: object): Promise<any>;
+    export function makeAuthenticatedPostRequest(cookies: Array<string>, url: string, body: object, customHeaders?: object): Promise<any>;
     /**
      * Make a PUT request with the proper authentication on Khan Academy
      *
-     * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+     * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
      * @param {string} url The url on Khan Academy to make the PUT request
      * @param {object} body The JSON body of the PUT request
      * @param {object} customHeaders Object of custom headers
@@ -122,7 +122,7 @@ declare module "request/authenticatedRequest" {
      * @returns {Promise} A promise that resolves to the response
      *
      */
-    export function makeAuthenticatedPutRequest(cookies: any[], url: string, body: object, customHeaders?: object): Promise<any>;
+    export function makeAuthenticatedPutRequest(cookies: Array<string>, url: string, body: object, customHeaders?: object): Promise<any>;
     /**
      * Make a DELETE request with the proper authentication on Khan Academy
      *
@@ -134,6 +134,92 @@ declare module "request/authenticatedRequest" {
      *
      */
     export function makeAuthenticatedDeleteRequest(cookies: any, url: string, customHeaders?: object): Promise<any>;
+}
+declare module "queries/feedbackQuery" {
+    export = FEEDBACK_QUERY;
+    const FEEDBACK_QUERY: "query feedbackQuery($topicId: String!, $focusKind: String!, $cursor: String, $limit: Int, $feedbackType: FeedbackType!, $currentSort: Int) {\n  feedback(focusId: $topicId, cursor: $cursor, limit: $limit, feedbackType: $feedbackType, focusKind: $focusKind, sort: $currentSort) {\n    feedback {\n      replyCount\n      appearsAsDeleted\n      author {\n        id\n        kaid\n        nickname\n        avatar {\n          name\n          imageSrc\n          __typename\n        }\n        __typename\n      }\n      badges {\n        name\n        icons {\n          smallUrl\n          __typename\n        }\n        description\n        __typename\n      }\n      content\n      date\n      definitelyNotSpam\n      deleted\n      downVoted\n      expandKey\n      feedbackType\n      flaggedBy\n      flaggedByUser\n      flags\n      focusUrl\n      focus {\n        kind\n        id\n        translatedTitle\n        relativeUrl\n        __typename\n      }\n      fromVideoAuthor\n      key\n      lowQualityScore\n      notifyOnAnswer\n      permalink\n      qualityKind\n      replyCount\n      replyExpandKeys\n      showLowQualityNotice\n      sumVotesIncremented\n      upVoted\n      ... on QuestionFeedback {\n        hasAnswered\n        answers {\n          replyCount\n          appearsAsDeleted\n          author {\n            id\n            kaid\n            nickname\n            avatar {\n              name\n              imageSrc\n              __typename\n            }\n            __typename\n          }\n          badges {\n            name\n            icons {\n              smallUrl\n              __typename\n            }\n            description\n            __typename\n          }\n          content\n          date\n          definitelyNotSpam\n          deleted\n          downVoted\n          expandKey\n          feedbackType\n          flaggedBy\n          flaggedByUser\n          flags\n          focusUrl\n          focus {\n            kind\n            id\n            translatedTitle\n            relativeUrl\n            __typename\n          }\n          fromVideoAuthor\n          key\n          lowQualityScore\n          notifyOnAnswer\n          permalink\n          qualityKind\n          replyCount\n          replyExpandKeys\n          showLowQualityNotice\n          sumVotesIncremented\n          upVoted\n          __typename\n        }\n        isOld\n        __typename\n      }\n      ... on AnswerFeedback {\n        question {\n          replyCount\n          appearsAsDeleted\n          author {\n            id\n            kaid\n            nickname\n            avatar {\n              name\n              imageSrc\n              __typename\n            }\n            __typename\n          }\n          badges {\n            name\n            icons {\n              smallUrl\n              __typename\n            }\n            description\n            __typename\n          }\n          content\n          date\n          definitelyNotSpam\n          deleted\n          downVoted\n          expandKey\n          feedbackType\n          flaggedBy\n          flaggedByUser\n          flags\n          focusUrl\n          focus {\n            kind\n            id\n            translatedTitle\n            relativeUrl\n            __typename\n          }\n          fromVideoAuthor\n          key\n          lowQualityScore\n          notifyOnAnswer\n          permalink\n          qualityKind\n          replyCount\n          replyExpandKeys\n          showLowQualityNotice\n          sumVotesIncremented\n          upVoted\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    cursor\n    isComplete\n    sortedByDate\n    __typename\n  }\n}\n";
+}
+declare module "discussion/feedbackQuery" {
+    export = feedbackQuery;
+    /**
+     *
+     * @param {Array<string>|null} cookies
+     * @param {number|string} id The ID of the program
+     * @param {"QUESTION"|"COMMENT"|"PROJECT_HELP_QUESTION"} [type="COMMENT"] Whether to get comments or questions
+     * @param {1|2} [sort=1] Sort by 1: Top Voted, 2: Most Recent
+     * @param {number} [limit=10] The maximum number of comments to return
+     * @param {string} [cursor] The cursor to start from
+     * @returns {FeedbackQuery}
+     */
+    function feedbackQuery(cookies: Array<string> | null, id: number | string, type?: "QUESTION" | "COMMENT" | "PROJECT_HELP_QUESTION", sort?: 1 | 2, limit?: number, cursor?: string): FeedbackQuery;
+    namespace feedbackQuery {
+        export { FeedbackQuery, FeedbackQueryFeedback, FeedbackQueryFeedbackFeedback, FeedbackQueryError };
+    }
+    type FeedbackQuery = {
+        data: {
+            feedback: FeedbackQueryFeedback | null;
+            errors: FeedbackQueryError[] | undefined;
+        };
+    };
+    type FeedbackQueryFeedback = {
+        __typename: "FeedbackForFocus";
+        cursor: string;
+        feedback: FeedbackQueryFeedbackFeedback[];
+        isComplete: boolean;
+        sortedByDate: boolean;
+    };
+    type FeedbackQueryFeedbackFeedback = {
+        __typename: "BasicFeedback";
+        appearsAsDeleted: unknown | null;
+        author: {
+            __typename: "User";
+            avatar: {
+                __typename: "Avatar";
+                imageSrc: string;
+                name: string;
+            };
+            id: string;
+            kaid: string;
+            nickname: string;
+        };
+        badges: unknown[];
+        content: string;
+        date: string;
+        definitelyNotSpam: boolean;
+        deleted: unknown | null;
+        downVoted: boolean;
+        expandKey: string;
+        feedbackType: string;
+        flaggedBy: unknown[];
+        flaggedByUser: boolean;
+        flags: unknown[];
+        focus: {
+            __typename: "FeedbackFocus";
+            id: string;
+            kind: string;
+            relativeUrl: string;
+            translatedTitle: string;
+        };
+        focusUrl: string;
+        fromVideoAuthor: boolean;
+        key: string;
+        lowQualityScore: unknown | null;
+        notifyOnAnswer: boolean;
+        permalink: string;
+        qualityKind: string;
+        replyCount: number;
+        replyExpandKeys: unknown | null;
+        showLowQualityNotice: unknown | null;
+        sumVotesIncremented: number;
+        upVoted: boolean;
+    };
+    type FeedbackQueryError = {
+        extensions: {
+            code: string;
+            serviceName: string;
+        };
+        message: string;
+    };
 }
 declare module "discussion/commentsOnComment" {
     /**
@@ -158,32 +244,32 @@ declare module "discussion/commentsOnProgram" {
      * Returns all the comments of type `commentType` on the program
      *
      * @param {string} programId
-     * @param {("comments","questions")} commentType - Whether to get comments or questions
+     * @param {"comments"|"questions"} commentType - Whether to get comments or questions
      *
      * @returns {object} All the comments on a program
      */
-    export function getProgramComments(programId: string, commentType?: string): object;
+    export function getProgramComments(programId: string, commentType?: "comments" | "questions"): object;
     /**
      * Returns the details of a comment on a program
      *
      * @param {string} programId - The ID of the program
      * @param {string} commentExpandKey - The comment expand key (found in the response of @see getProgramComments)
-     * @param {("comments","questions")} commentType - Whether getting a comment or a question
+     * @param {"comments"|"questions"} commentType - Whether getting a comment or a question
      *
      * @returns {object} The comment
      */
-    export function getProgramCommentDetails(programId: string, commentExpandKey: string, commentType?: string): object;
+    export function getProgramCommentDetails(programId: string, commentExpandKey: string, commentType?: "comments" | "questions"): object;
     /**
      * Adds a comment on the program
      *
      * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
      * @param {string} programId - The ID of the program
      * @param {string} text - The content of the comment
-     * @param {("comments","questions")} commentType - Whether adding a comment or a question
+     * @param {"comments"|"questions"} commentType - Whether adding a comment or a question
      *
      * @returns {object} The comment
      */
-    export function commentOnProgram(cookies: Array<string>, programId: string, text: string, commentType?: string): object;
+    export function commentOnProgram(cookies: Array<string>, programId: string, text: string, commentType?: "comments" | "questions"): object;
     /**
      * Deletes a comment on a program
      *
@@ -856,20 +942,20 @@ declare module "programs/programs" {
     /**
      * Updates an existing program based on the parameters
      *
-     * @param {Array} cookies An array of set-cookie response headers from axios
+     * @param {Array<string>} cookies An array of set-cookie response headers from axios
      * @param {number|string} programId The program's ID being updated
      * @param {string} code The code
      * @param {object} [settings] Settings to override the JSON request
      * @param {object} [programJson] The program json if already retrieved (to reduce unnecessary requests)
      */
-    export function updateProgram(cookies: any[], programId: number | string, code: string, settings?: object, programJson?: object): Promise<any>;
+    export function updateProgram(cookies: Array<string>, programId: number | string, code: string, settings?: object, programJson?: object): Promise<any>;
     /**
      * Deletes a program
      *
-     * @param {Array} cookies - An array of set-cookie response headers from axios
+     * @param {Array<string>} cookies - An array of set-cookie response headers from axios
      * @param {number|string} programId - The program ID
      */
-    export function deleteProgram(cookies: any[], programId: number | string): Promise<any>;
+    export function deleteProgram(cookies: Array<string>, programId: number | string): Promise<any>;
 }
 declare module "programs/getSpinoffs" {
     export function getSpinoffs(programId: any, sortingType: any, limit: any): Promise<any>;
@@ -932,6 +1018,7 @@ declare module "ka-api" {
         deleteProgramComment: typeof import("discussion/commentsOnProgram").deleteProgramComment;
         getCommentsOnComment: typeof import("discussion/commentsOnComment").getCommentsOnComment;
         commentOnComment: typeof import("discussion/commentsOnComment").commentOnComment;
+        feedbackQuery: typeof import("discussion/feedbackQuery");
     };
     export const notifications: {
         getNotificationsRequest: typeof import("notifications/notifications").getNotificationsRequest;

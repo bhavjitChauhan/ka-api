@@ -1,4 +1,4 @@
-const axios = require("axios");
+const { default: axios } = require("axios");
 
 const LOGIN_QUERY = require("../queries/loginQuery.js");
 

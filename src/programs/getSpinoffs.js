@@ -1,4 +1,4 @@
-const axios = require("axios");
+const { default: axios } = require("axios");
 
 const SORTING_TYPE = require("./sortingType.js");
 

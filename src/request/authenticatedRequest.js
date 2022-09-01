@@ -1,11 +1,11 @@
-const axios = require("axios");
+const { default: axios } = require("axios");
 
 const getAuthenticatedHeader = require("../auth/getAuthenticatedHeader.js");
 
 /**
  * Make a GET request with the proper authentication on Khan Academy
  *
- * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
  * @param {string} url The url on Khan Academy to make the GET request
  * @param {object} customHeaders Object of custom headers
  *
@@ -18,7 +18,7 @@ async function makeAuthenticatedGetRequest(cookies, url, customHeaders = {}) {
 /**
  * Make a POST request with the proper authentication on Khan Academy
  *
- * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
  * @param {string} url The url on Khan Academy to make the POST request
  * @param {object} body The JSON body of the POST request
  * @param {object} customHeaders Object of custom headers
@@ -41,7 +41,7 @@ async function makeAuthenticatedPostRequest(
 /**
  * Make a PUT request with the proper authentication on Khan Academy
  *
- * @param {Array} cookies A list of cookies returned from the server (set-cookie header)
+ * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
  * @param {string} url The url on Khan Academy to make the PUT request
  * @param {object} body The JSON body of the PUT request
  * @param {object} customHeaders Object of custom headers

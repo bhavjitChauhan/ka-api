@@ -1,4 +1,4 @@
-const axios = require("axios");
+const { default: axios } = require("axios");
 
 const PROGRAM_DEFAULT_JSON = require("./defaultProgramJson.js");
 
@@ -140,7 +140,7 @@ async function spinOffProgram(
 /**
  * Updates an existing program based on the parameters
  *
- * @param {Array} cookies An array of set-cookie response headers from axios
+ * @param {Array<string>} cookies An array of set-cookie response headers from axios
  * @param {number|string} programId The program's ID being updated
  * @param {string} code The code
  * @param {object} [settings] Settings to override the JSON request
@@ -186,7 +186,7 @@ async function updateProgram(
 /**
  * Deletes a program
  *
- * @param {Array} cookies - An array of set-cookie response headers from axios
+ * @param {Array<string>} cookies - An array of set-cookie response headers from axios
  * @param {number|string} programId - The program ID
  */
 async function deleteProgram(cookies, programId) {

@@ -11,6 +11,7 @@ module.exports.cookies = {
 };
 
 module.exports.discussion = {
+    feedbackQuery: require("./discussion/feedbackQuery.js"),
     ...require("./discussion/commentsOnComment.js"),
     ...require("./discussion/commentsOnProgram.js"),
 };

@@ -2,7 +2,7 @@
  * Note: comments on programs are different than comments on comments
  */
 
-const axios = require("axios");
+const { default: axios } = require("axios");
 
 const {
     makeAuthenticatedPostRequest,
@@ -13,7 +13,7 @@ const {
  * Returns all the comments of type `commentType` on the program
  *
  * @param {string} programId
- * @param {("comments","questions")} commentType - Whether to get comments or questions
+ * @param {"comments"|"questions"} commentType - Whether to get comments or questions
  *
  * @returns {object} All the comments on a program
  */
@@ -30,7 +30,7 @@ async function getProgramComments(programId, commentType = "comments") {
  *
  * @param {string} programId - The ID of the program
  * @param {string} commentExpandKey - The comment expand key (found in the response of @see getProgramComments)
- * @param {("comments","questions")} commentType - Whether getting a comment or a question
+ * @param {"comments"|"questions"} commentType - Whether getting a comment or a question
  *
  * @returns {object} The comment
  */
@@ -52,7 +52,7 @@ async function getProgramCommentDetails(
  * @param {Array<string>} cookies A list of cookies returned from the server (set-cookie header)
  * @param {string} programId - The ID of the program
  * @param {string} text - The content of the comment
- * @param {("comments","questions")} commentType - Whether adding a comment or a question
+ * @param {"comments"|"questions"} commentType - Whether adding a comment or a question
  *
  * @returns {object} The comment
  */
