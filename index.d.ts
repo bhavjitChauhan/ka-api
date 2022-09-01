@@ -933,9 +933,9 @@ declare module "programs/programs" {
      *
      * @param {number|string} id The program's ID
      *
-     * @return {Promise<ShowScratchpad|undefined>}
+     * @return {Promise<ShowScratchpad>}
      */
-    export function showScratchpad(id: number | string): Promise<ShowScratchpad | undefined>;
+    export function showScratchpad(id: number | string): Promise<ShowScratchpad>;
     /**
      * Create a new program on KA's servers
      *

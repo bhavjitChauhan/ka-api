@@ -33,7 +33,7 @@ async function getProgramJSON(id) {
  *
  * @param {number|string} id The program's ID
  *
- * @return {Promise<ShowScratchpad|undefined>}
+ * @return {Promise<ShowScratchpad>}
  */
 async function showScratchpad(id) {
     const url = `https://www.khanacademy.org/api/internal/show_scratchpad?scratchpad_id=${id}`;
