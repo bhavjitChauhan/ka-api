@@ -336,7 +336,7 @@ module.exports = {
  * @property {string} discussion.focusKind
  * @property {boolean} discussion.canEdit
  * @property {boolean} upVoted
- * @property {unknown|null} originScratchpad
+ * @property {ShowScratchpadOriginScratchpad|null} originScratchpad
  * @property {object} topic
  * @property {unknown|null} topic.curriculumKey
  * @property {string} topic.relativeUrl
@@ -420,4 +420,21 @@ module.exports = {
  * @property {string} userScratchpad.userKey
  * @property {string} userScratchpad.id
  * @property {boolean} userScratchpad.viewed
+ */
+
+/**
+ * @typedef {object} ShowScratchpadOriginScratchpad
+ * @property {unknown|null} category
+ * @property {string} imageUrl
+ * @property {string} url
+ * @property {unknown|null} translatedProjectEval
+ * @property {boolean} sendToPeers
+ * @property {string} translatedDescription
+ * @property {string} slug
+ * @property {boolean} deleted
+ * @property {unknown|null} translatedProjectEvalTips
+ * @property {object} revision
+ * @property {number} revision.id
+ * @property {number} id
+ * @property {string} translatedTitle
  */

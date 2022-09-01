@@ -814,7 +814,7 @@ declare module "programs/programs" {
             canEdit: boolean;
         };
         upVoted: boolean;
-        originScratchpad: unknown | null;
+        originScratchpad: ShowScratchpadOriginScratchpad | null;
         topic: {
             curriculumKey: unknown | null;
             relativeUrl: string;
@@ -905,6 +905,22 @@ declare module "programs/programs" {
             id: string;
             viewed: boolean;
         };
+    };
+    export type ShowScratchpadOriginScratchpad = {
+        category: unknown | null;
+        imageUrl: string;
+        url: string;
+        translatedProjectEval: unknown | null;
+        sendToPeers: boolean;
+        translatedDescription: string;
+        slug: string;
+        deleted: boolean;
+        translatedProjectEvalTips: unknown | null;
+        revision: {
+            id: number;
+        };
+        id: number;
+        translatedTitle: string;
     };
     /**
      * Returns the program info, given the program's ID
