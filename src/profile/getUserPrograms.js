@@ -71,7 +71,7 @@ module.exports = {
  * @property {string} thumb
  * @property {string} created
  * @property {string} authorKaid
- * @property {string} title
+ * @property {string|null} title
  * @property {number} sumVotesIncremented
  * @property {boolean} flaggedByUser
  * @property {string} url

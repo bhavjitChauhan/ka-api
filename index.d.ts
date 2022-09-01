@@ -546,7 +546,7 @@ declare module "profile/getUserPrograms" {
         thumb: string;
         created: string;
         authorKaid: string;
-        title: string;
+        title: string | null;
         sumVotesIncremented: number;
         flaggedByUser: boolean;
         url: string;
@@ -692,7 +692,7 @@ declare module "programs/programs" {
             editSlug: string;
             category: unknown | null;
             originRevisionId: number | null;
-            title: string;
+            title: string | null;
             translatedProjectEval: unknown | null;
             sendToPeers: boolean;
             nodeSlug: string;
@@ -741,7 +741,7 @@ declare module "programs/programs" {
             translatedProjectEvalTips: unknown | null;
             userAuthoredContentType: string;
             kaid: string;
-            translatedTitle: string;
+            translatedTitle: string | null;
         };
         embedded: boolean;
         creatorProfile: {
@@ -920,7 +920,7 @@ declare module "programs/programs" {
             id: number;
         };
         id: number;
-        translatedTitle: string;
+        translatedTitle: string | null;
     };
     /**
      * Returns the program info, given the program's ID

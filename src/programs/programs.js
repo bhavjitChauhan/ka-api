@@ -220,7 +220,7 @@ module.exports = {
  * @property {string} scratchpad.editSlug
  * @property {unknown|null} scratchpad.category
  * @property {number|null} scratchpad.originRevisionId
- * @property {string} scratchpad.title
+ * @property {string|null} scratchpad.title
  * @property {unknown|null} scratchpad.translatedProjectEval
  * @property {boolean} scratchpad.sendToPeers
  * @property {string} scratchpad.nodeSlug
@@ -268,7 +268,7 @@ module.exports = {
  * @property {unknown|null} scratchpad.translatedProjectEvalTips
  * @property {string} scratchpad.userAuthoredContentType
  * @property {string} scratchpad.kaid
- * @property {string} scratchpad.translatedTitle
+ * @property {string|null} scratchpad.translatedTitle
  * @property {boolean} embedded
  * @property {object} creatorProfile
  * @property {boolean} creatorProfile.isSelf
@@ -436,5 +436,5 @@ module.exports = {
  * @property {object} revision
  * @property {number} revision.id
  * @property {number} id
- * @property {string} translatedTitle
+ * @property {string|null} translatedTitle
  */
