@@ -21,9 +21,15 @@ const VALID_PROGRAM_TYPES = ["pjs", "webpage", "sql"];
  * Returns the program info, given the program's ID
  *
  * @param {number|string} id The program's ID
+ * @param {GetProgramJSONProjection} [projection] The projection to use
+ *
+ * @return {Promise<GetProgramJSON>}
  */
-async function getProgramJSON(id) {
-    const url = `https://www.khanacademy.org/api/internal/scratchpads/${id}`;
+async function getProgramJSON(id, projection) {
+    if (projection) {
+        projection = `?projection=${JSON.stringify(projection)}`;
+    } else projection = "";
+    const url = `https://www.khanacademy.org/api/internal/scratchpads/${id}${projection}`;
 
     return axios.get(url).then((response) => response.data);
 }
@@ -203,6 +209,142 @@ module.exports = {
     updateProgram,
     deleteProgram,
 };
+
+/**
+ * @typedef {object} GetProgramJSON
+ * @property {string} contentKindCode
+ * @property {string} newUrlPath
+ * @property {string} key
+ * @property {string} relativeUrl
+ * @property {number|null} originScratchpadId
+ * @property {string} forkedFromTopic
+ * @property {number} height
+ * @property {string} date
+ * @property {number} originSimilarity
+ * @property {number} id
+ * @property {string} description
+ * @property {unknown|null} category
+ * @property {number|null} originRevisionId
+ * @property {string} title
+ * @property {unknown|null} translatedProjectEval
+ * @property {boolean} sendToPeers
+ * @property {string} slug
+ * @property {boolean} isChallenge
+ * @property {number} width
+ * @property {unknown|null} youtubeId
+ * @property {string} docsUrlPath
+ * @property {string} contentKind
+ * @property {string} type
+ * @property {object} revision
+ * @property {unknown|null} revision.tests
+ * @property {string} revision.code
+ * @property {string} revision.created
+ * @property {[number,number][]} revision.folds
+ * @property {unknown|null} revision.translatedMp3Url
+ * @property {boolean} revision.hasAudio
+ * @property {unknown|null} revision.mp3Url
+ * @property {string} revision.editorType
+ * @property {string} revision.playback
+ * @property {unknown|null} revision.youtubeId
+ * @property {number} revision.configVersion
+ * @property {number} revision.id
+ * @property {string} imagePath
+ * @property {string} nodeType
+ * @property {string} editSlug
+ * @property {boolean} isProject
+ * @property {unknown[]} tags
+ * @property {string} translatedDescription
+ * @property {boolean} byChild
+ * @property {unknown|null} difficulty
+ * @property {boolean} originIsProject
+ * @property {boolean} hideFromHotlist
+ * @property {boolean} canvasOnly
+ * @property {string} nodeSlug
+ * @property {number} spinoffCount
+ * @property {string} kind
+ * @property {string} created
+ * @property {string} url
+ * @property {string} imageUrl
+ * @property {boolean} isPublished
+ * @property {number} sumVotesIncremented
+ * @property {unknown|null} defaultUrlPath
+ * @property {unknown[]} flags
+ * @property {boolean} isProjectOrFork
+ * @property {unknown|null} translatedProjectEvalTips
+ * @property {string} userAuthoredContentType
+ * @property {string} kaid
+ * @property {string} translatedTitle
+ */
+
+/**
+ * @typedef {object} GetProgramJSONProjection
+ * @property {1|true|undefined} contentKindCode
+ * @property {1|true|undefined} newUrlPath
+ * @property {1|true|undefined} key
+ * @property {1|true|undefined} relativeUrl
+ * @property {1|true|undefined} originScratchpadId
+ * @property {1|true|undefined} forkedFromTopic
+ * @property {1|true|undefined} height
+ * @property {1|true|undefined} date
+ * @property {1|true|undefined} originSimilarity
+ * @property {1|true|undefined} id
+ * @property {1|true|undefined} description
+ * @property {1|true|undefined} category
+ * @property {1|true|undefined} originRevisionId
+ * @property {1|true|undefined} title
+ * @property {1|true|undefined} translatedProjectEval
+ * @property {1|true|undefined} sendToPeers
+ * @property {1|true|undefined} slug
+ * @property {1|true|undefined} isChallenge
+ * @property {1|true|undefined} width
+ * @property {1|true|undefined} youtubeId
+ * @property {1|true|undefined} docsUrlPath
+ * @property {1|true|undefined} contentKind
+ * @property {1|true|undefined} type
+ * @property {1|true|GetProgramJSONProjectionRevision|undefined} revision
+ * @property {1|true|undefined} imagePath
+ * @property {1|true|undefined} nodeType
+ * @property {1|true|undefined} editSlug
+ * @property {1|true|undefined} isProject
+ * @property {1|true|undefined} tags
+ * @property {1|true|undefined} translatedDescription
+ * @property {1|true|undefined} byChild
+ * @property {1|true|undefined} difficulty
+ * @property {1|true|undefined} originIsProject
+ * @property {1|true|undefined} hideFromHotlist
+ * @property {1|true|undefined} canvasOnly
+ * @property {1|true|undefined} nodeSlug
+ * @property {1|true|undefined} spinoffCount
+ * @property {1|true|undefined} kind
+ * @property {1|true|undefined} created
+ * @property {1|true|undefined} url
+ * @property {1|true|undefined} imageUrl
+ * @property {1|true|undefined} isPublished
+ * @property {1|true|undefined} sumVotesIncremented
+ * @property {1|true|undefined} defaultUrlPath
+ * @property {1|true|undefined} flags
+ * @property {1|true|undefined} isProjectOrFork
+ * @property {1|true|undefined} translatedProjectEvalTips
+ * @property {1|true|undefined} userAuthoredContentType
+ * @property {1|true|undefined} kaid
+ * @property {1|true|undefined} translatedTitle
+ */
+
+/**
+ * @typedef {object} GetProgramJSONProjectionRevision
+ * @property {1|true|undefined} tests
+ * @property {1|true|undefined} code
+ * @property {1|true|undefined} created
+ * @property {1|true|undefined} folds
+ * @property {1|true|undefined} translatedMp3Url
+ * @property {1|true|undefined} hasAudio
+ * @property {1|true|undefined} mp3Url
+ * @property {1|true|undefined} editorType
+ * @property {1|true|undefined} playback
+ * @property {1|true|undefined} youtubeId
+ * @property {1|true|undefined} configVersion
+ * @property {1|true|undefined} id
+ */
 
 /**
  * @typedef {object} ShowScratchpad
