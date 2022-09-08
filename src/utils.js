@@ -54,7 +54,7 @@ const VALID_KAID_LENGTHS = [20, 21, 22, 23, 24, 25];
 const KaidRegex = /^kaid_\d{20,25}$/;
 
 const VALID_PROGRAM_ID_LENGTHS = [9, 10, 16];
-const ProgramIDRegex = /^((?:\d{9,10})|(?:\d{16}))$/;
+const ProgramIDRegex = /^[1-9](?:(?:\d{8,9})|(?:\d{15}))$/;
 
 /**
  * Checks if the input is a valid KAID
@@ -99,7 +99,7 @@ function isValidProgramID(input) {
     if (length < 0) throw new RangeError("Expected a non-empty string");
     if (!VALID_PROGRAM_ID_LENGTHS.includes(length))
         throw new RangeError("Expected a valid length");
-    if (!/^\d+$/.test(input))
+    if (!/^[1-9]\d+$/.test(input))
         throw new RangeError("Expected a string of digits");
     return true;
 }

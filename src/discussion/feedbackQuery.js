@@ -63,15 +63,7 @@ module.exports = feedbackQuery;
  * @typedef {object} FeedbackQueryFeedbackFeedback
  * @property {"BasicFeedback"} __typename
  * @property {unknown|null} appearsAsDeleted
- * @property {object} author
- * @property {"User"} author.__typename
- * @property {object} author.avatar
- * @property {"Avatar"} author.avatar.__typename
- * @property {string} author.avatar.imageSrc
- * @property {string} author.avatar.name
- * @property {string} author.id
- * @property {string} author.kaid
- * @property {string} author.nickname
+ * @property {FeedbackQueryFeedbackFeedbackAuthor|null} author
  * @property {unknown[]} badges
  * @property {string} content
  * @property {string} date
@@ -101,6 +93,18 @@ module.exports = feedbackQuery;
  * @property {unknown|null} showLowQualityNotice
  * @property {number} sumVotesIncremented
  * @property {boolean} upVoted
+ */
+
+/**
+ * @typedef {object} FeedbackQueryFeedbackFeedbackAuthor
+ * @property {"User"} __typename
+ * @property {object} avatar
+ * @property {"Avatar"} avatar.__typename
+ * @property {string} avatar.imageSrc
+ * @property {string} avatar.name
+ * @property {string} id
+ * @property {string} kaid
+ * @property {string} nickname
  */
 
 /**

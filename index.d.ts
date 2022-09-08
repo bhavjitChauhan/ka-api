@@ -153,7 +153,7 @@ declare module "discussion/feedbackQuery" {
      */
     function feedbackQuery(cookies: Array<string> | null, id: number | string, type?: "QUESTION" | "COMMENT" | "PROJECT_HELP_QUESTION", sort?: 1 | 2, limit?: number, cursor?: string): Promise<FeedbackQuery>;
     namespace feedbackQuery {
-        export { FeedbackQuery, FeedbackQueryFeedback, FeedbackQueryFeedbackFeedback, FeedbackQueryError };
+        export { FeedbackQuery, FeedbackQueryFeedback, FeedbackQueryFeedbackFeedback, FeedbackQueryFeedbackFeedbackAuthor, FeedbackQueryError };
     }
     type FeedbackQuery = {
         data: {
@@ -171,17 +171,7 @@ declare module "discussion/feedbackQuery" {
     type FeedbackQueryFeedbackFeedback = {
         __typename: "BasicFeedback";
         appearsAsDeleted: unknown | null;
-        author: {
-            __typename: "User";
-            avatar: {
-                __typename: "Avatar";
-                imageSrc: string;
-                name: string;
-            };
-            id: string;
-            kaid: string;
-            nickname: string;
-        };
+        author: FeedbackQueryFeedbackFeedbackAuthor | null;
         badges: unknown[];
         content: string;
         date: string;
@@ -212,6 +202,17 @@ declare module "discussion/feedbackQuery" {
         showLowQualityNotice: unknown | null;
         sumVotesIncremented: number;
         upVoted: boolean;
+    };
+    type FeedbackQueryFeedbackFeedbackAuthor = {
+        __typename: "User";
+        avatar: {
+            __typename: "Avatar";
+            imageSrc: string;
+            name: string;
+        };
+        id: string;
+        kaid: string;
+        nickname: string;
     };
     type FeedbackQueryError = {
         extensions: {
