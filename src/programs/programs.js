@@ -21,7 +21,7 @@ const VALID_PROGRAM_TYPES = ["pjs", "webpage", "sql"];
  * Returns the program info, given the program's ID
  *
  * @param {number|string} id The program's ID
- * @param {GetProgramJSONProjection} [projection] The projection to use
+ * @param {Record<string,1,true,Record<string,1,true>>} [projection] The projection to use
  *
  * @return {Promise<GetProgramJSON>}
  */
@@ -274,76 +274,6 @@ module.exports = {
  * @property {string} userAuthoredContentType
  * @property {string} kaid
  * @property {string} translatedTitle
- */
-
-/**
- * @typedef {object} GetProgramJSONProjection
- * @property {1|true|undefined} contentKindCode
- * @property {1|true|undefined} newUrlPath
- * @property {1|true|undefined} key
- * @property {1|true|undefined} relativeUrl
- * @property {1|true|undefined} originScratchpadId
- * @property {1|true|undefined} forkedFromTopic
- * @property {1|true|undefined} height
- * @property {1|true|undefined} date
- * @property {1|true|undefined} originSimilarity
- * @property {1|true|undefined} id
- * @property {1|true|undefined} description
- * @property {1|true|undefined} category
- * @property {1|true|undefined} originRevisionId
- * @property {1|true|undefined} title
- * @property {1|true|undefined} translatedProjectEval
- * @property {1|true|undefined} sendToPeers
- * @property {1|true|undefined} slug
- * @property {1|true|undefined} isChallenge
- * @property {1|true|undefined} width
- * @property {1|true|undefined} youtubeId
- * @property {1|true|undefined} docsUrlPath
- * @property {1|true|undefined} contentKind
- * @property {1|true|undefined} type
- * @property {1|true|GetProgramJSONProjectionRevision|undefined} revision
- * @property {1|true|undefined} imagePath
- * @property {1|true|undefined} nodeType
- * @property {1|true|undefined} editSlug
- * @property {1|true|undefined} isProject
- * @property {1|true|undefined} tags
- * @property {1|true|undefined} translatedDescription
- * @property {1|true|undefined} byChild
- * @property {1|true|undefined} difficulty
- * @property {1|true|undefined} originIsProject
- * @property {1|true|undefined} hideFromHotlist
- * @property {1|true|undefined} canvasOnly
- * @property {1|true|undefined} nodeSlug
- * @property {1|true|undefined} spinoffCount
- * @property {1|true|undefined} kind
- * @property {1|true|undefined} created
- * @property {1|true|undefined} url
- * @property {1|true|undefined} imageUrl
- * @property {1|true|undefined} isPublished
- * @property {1|true|undefined} sumVotesIncremented
- * @property {1|true|undefined} defaultUrlPath
- * @property {1|true|undefined} flags
- * @property {1|true|undefined} isProjectOrFork
- * @property {1|true|undefined} translatedProjectEvalTips
- * @property {1|true|undefined} userAuthoredContentType
- * @property {1|true|undefined} kaid
- * @property {1|true|undefined} translatedTitle
- */
-
-/**
- * @typedef {object} GetProgramJSONProjectionRevision
- * @property {1|true|undefined} tests
- * @property {1|true|undefined} code
- * @property {1|true|undefined} created
- * @property {1|true|undefined} folds
- * @property {1|true|undefined} translatedMp3Url
- * @property {1|true|undefined} hasAudio
- * @property {1|true|undefined} mp3Url
- * @property {1|true|undefined} editorType
- * @property {1|true|undefined} playback
- * @property {1|true|undefined} youtubeId
- * @property {1|true|undefined} configVersion
- * @property {1|true|undefined} id
  */
 
 /**

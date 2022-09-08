@@ -743,72 +743,6 @@ declare module "programs/programs" {
         kaid: string;
         translatedTitle: string;
     };
-    export type GetProgramJSONProjection = {
-        contentKindCode: 1 | true | undefined;
-        newUrlPath: 1 | true | undefined;
-        key: 1 | true | undefined;
-        relativeUrl: 1 | true | undefined;
-        originScratchpadId: 1 | true | undefined;
-        forkedFromTopic: 1 | true | undefined;
-        height: 1 | true | undefined;
-        date: 1 | true | undefined;
-        originSimilarity: 1 | true | undefined;
-        id: 1 | true | undefined;
-        description: 1 | true | undefined;
-        category: 1 | true | undefined;
-        originRevisionId: 1 | true | undefined;
-        title: 1 | true | undefined;
-        translatedProjectEval: 1 | true | undefined;
-        sendToPeers: 1 | true | undefined;
-        slug: 1 | true | undefined;
-        isChallenge: 1 | true | undefined;
-        width: 1 | true | undefined;
-        youtubeId: 1 | true | undefined;
-        docsUrlPath: 1 | true | undefined;
-        contentKind: 1 | true | undefined;
-        type: 1 | true | undefined;
-        revision: 1 | true | GetProgramJSONProjectionRevision | undefined;
-        imagePath: 1 | true | undefined;
-        nodeType: 1 | true | undefined;
-        editSlug: 1 | true | undefined;
-        isProject: 1 | true | undefined;
-        tags: 1 | true | undefined;
-        translatedDescription: 1 | true | undefined;
-        byChild: 1 | true | undefined;
-        difficulty: 1 | true | undefined;
-        originIsProject: 1 | true | undefined;
-        hideFromHotlist: 1 | true | undefined;
-        canvasOnly: 1 | true | undefined;
-        nodeSlug: 1 | true | undefined;
-        spinoffCount: 1 | true | undefined;
-        kind: 1 | true | undefined;
-        created: 1 | true | undefined;
-        url: 1 | true | undefined;
-        imageUrl: 1 | true | undefined;
-        isPublished: 1 | true | undefined;
-        sumVotesIncremented: 1 | true | undefined;
-        defaultUrlPath: 1 | true | undefined;
-        flags: 1 | true | undefined;
-        isProjectOrFork: 1 | true | undefined;
-        translatedProjectEvalTips: 1 | true | undefined;
-        userAuthoredContentType: 1 | true | undefined;
-        kaid: 1 | true | undefined;
-        translatedTitle: 1 | true | undefined;
-    };
-    export type GetProgramJSONProjectionRevision = {
-        tests: 1 | true | undefined;
-        code: 1 | true | undefined;
-        created: 1 | true | undefined;
-        folds: 1 | true | undefined;
-        translatedMp3Url: 1 | true | undefined;
-        hasAudio: 1 | true | undefined;
-        mp3Url: 1 | true | undefined;
-        editorType: 1 | true | undefined;
-        playback: 1 | true | undefined;
-        youtubeId: 1 | true | undefined;
-        configVersion: 1 | true | undefined;
-        id: 1 | true | undefined;
-    };
     export type ShowScratchpad = {
         scratchpad: {
             contentKindCode: string;
@@ -1058,11 +992,11 @@ declare module "programs/programs" {
      * Returns the program info, given the program's ID
      *
      * @param {number|string} id The program's ID
-     * @param {GetProgramJSONProjection} [projection] The projection to use
+     * @param {Record<string,1,true,Record<string,1,true>>} [projection] The projection to use
      *
      * @return {Promise<GetProgramJSON>}
      */
-    export function getProgramJSON(id: number | string, projection?: GetProgramJSONProjection): Promise<GetProgramJSON>;
+    export function getProgramJSON(id: number | string, projection?: any): Promise<GetProgramJSON>;
     /**
      * Returns the program and author info, given the program's ID
      *
