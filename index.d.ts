@@ -1046,6 +1046,54 @@ declare module "programs/getSpinoffs" {
     export function getSpinoffs(programId: any, sortingType: any, limit: any): Promise<any>;
 }
 declare module "utils" {
+    export const VALID_KAID_LENGTHS: number[];
+    export const KaidRegex: RegExp;
+    /**
+     * Checks if the input is a valid KAID
+     *
+     * @param {string} input
+     * @param {boolean} [error=true] Whether to throw an error
+     * @returns {boolean}
+     */
+    export function isValidKaid(input: string, error?: boolean): boolean;
+    export const VALID_PROGRAM_ID_LENGTHS: number[];
+    /**
+     * @link https://regexr.com/6t2vp
+     */
+    export const ProgramIDRegex: RegExp;
+    /**
+     * Checks if the input is a valid program ID
+     *
+     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L1
+     *
+     * @param {number|string} input
+     * @param {boolean} [error=true] Whether to throw an error
+     * @returns {boolean}
+     */
+    export function isValidProgramID(input: number | string, error?: boolean): boolean;
+    export const PROGRAM_URL_TLDS: string[];
+    export const PROGRAM_URL_LOCALES: string[];
+    export const PROGRAM_URL_PATHS: string[];
+    /**
+     * @link https://regexr.com/6uo1g
+     */
+    export const ProgramURLRegex: RegExp;
+    /**
+     * Checks if the input is a valid program URL
+     *
+     * @param {string} input
+     * @returns
+     */
+    export function isValidProgramURL(input: string): boolean;
+    /**
+     * Extracts the program ID from a program URL
+     *
+     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L16
+     *
+     * @param {string} url
+     * @returns {number}
+     */
+    export function extractProgramID(url: string): number;
     /**
      * Gets the latency of the Khan Academy API
      *
@@ -1053,35 +1101,6 @@ declare module "utils" {
      * @returns {Promise<number|null>}
      */
     export function getLatency(cookies: any[] | undefined): Promise<number | null>;
-    export const VALID_KAID_LENGTHS: number[];
-    export const KaidRegex: RegExp;
-    export const VALID_PROGRAM_ID_LENGTHS: number[];
-    export const ProgramIDRegex: RegExp;
-    /**
-     * Checks if the input is a valid KAID
-     *
-     * @param {string} input
-     * @returns {boolean}
-     */
-    export function isValidKaid(input: string): boolean;
-    /**
-     * Checks if the input is a valid program ID
-     *
-     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L1
-     *
-     * @param {number|string} input
-     * @returns {boolean}
-     */
-    export function isValidProgramID(input: number | string): boolean;
-    /**
-     * Extracts the program ID from a program URL
-     *
-     * @link https://github.com/bhavjitChauhan/khanalytics/blob/a5d9c865bf7953a7ed8dff6074ba232acebc6cfe/client/src/util/programID.js#L16
-     *
-     * @param {string} url
-     * @returns {string}
-     */
-    export function extractProgramID(url: string): string;
 }
 declare module "ka-api" {
     export const auth: {
@@ -1135,14 +1154,19 @@ declare module "ka-api" {
         makeAuthenticatedDeleteRequest: typeof import("request/authenticatedRequest").makeAuthenticatedDeleteRequest;
     };
     export const utils: {
-        getLatency: typeof import("utils").getLatency;
         VALID_KAID_LENGTHS: number[];
         KaidRegex: RegExp;
+        isValidKaid: typeof import("utils").isValidKaid;
         VALID_PROGRAM_ID_LENGTHS: number[];
         ProgramIDRegex: RegExp;
-        isValidKaid: typeof import("utils").isValidKaid;
         isValidProgramID: typeof import("utils").isValidProgramID;
+        PROGRAM_URL_TLDS: string[];
+        PROGRAM_URL_LOCALES: string[];
+        PROGRAM_URL_PATHS: string[];
+        ProgramURLRegex: RegExp;
+        isValidProgramURL: typeof import("utils").isValidProgramURL;
         extractProgramID: typeof import("utils").extractProgramID;
+        getLatency: typeof import("utils").getLatency;
     };
     export const config: {
         filterBadwords: boolean;
